@@ -3,3 +3,4 @@
 
 ##Requirements
 Microsoft.EntityFrameworkCore;
+password encrypt Bcrypt.Net.Next
