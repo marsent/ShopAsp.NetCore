@@ -1,4 +1,7 @@
 ﻿@model ShopAsp.NetCore.Models.User
+@{
+    Layout = "_Layout";
+}
 <div class="container">
 
     <div class="card o-hidden border-0 shadow-lg my-5">
@@ -59,20 +62,20 @@
         </div>
     </div>
     @*@if (ViewBag.error != null)
-    {
-        <script type="text/javascript">
+        {
+            <script type="text/javascript">
 
-            window.onload = function () {
-                swal({
-                    title: "Tạo tài khoản thất bại",
-                    text: "@Html.Raw(ViewBag.error)",
-                    icon: "warning",
-                    dangerMode: true
-                })
-            };
-        </script>
+                window.onload = function () {
+                    swal({
+                        title: "Tạo tài khoản thất bại",
+                        text: "@Html.Raw(ViewBag.error)",
+                        icon: "warning",
+                        dangerMode: true
+                    })
+                };
+            </script>
 
-    }*@
+        }*@
 </div>
 @section Scripts{
     <partial name="_ValidationScriptsPartial" />

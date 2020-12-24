@@ -1,4 +1,4 @@
-﻿@Layout _LayoutAdmin
+﻿@{ Layout = "_Layout"; }
 <div class="row justify-content-md-start">
     <div class="col-md-4">
         <div class="card">
@@ -9,7 +9,8 @@
                 <p>Id: @ViewBag.Id</p>
                 <p>Name: @ViewBag.Name</p>
                 <p>Email:  @ViewBag.Email</p>
-                @if(ViewBag.Role==1){
+                @if (ViewBag.Role == 1)
+                {
                     <p>Role: Admin</p>
                 }
                 else

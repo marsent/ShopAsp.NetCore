@@ -26,11 +26,11 @@ namespace ShopAsp.NetCore.Controllers
             ViewBag.Name = HttpContext.Session.GetString("FullName");
             ViewBag.Email = HttpContext.Session.GetString("Email");
             ViewBag.Role = HttpContext.Session.GetInt32("Role"); ;
-
             return View();
         }
         public IActionResult Register()
         {
+            ViewData["Title"] = "Đăng kí";
             return View();
         }
 
@@ -62,6 +62,8 @@ namespace ShopAsp.NetCore.Controllers
         public IActionResult Login()
         {
             ViewBag.Success = TempData["Success"];
+            ViewData["Title"] = "Đăng nhập";
+
             return View();
         }
         [HttpPost]

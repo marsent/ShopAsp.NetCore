@@ -21,7 +21,7 @@ namespace ShopAsp.NetCore.Controllers
         }
         public IActionResult Index()
         {
-
+            ViewData["Title"] = "Quản lý sản phẩm";
             return View();
 
         }
@@ -31,9 +31,11 @@ namespace ShopAsp.NetCore.Controllers
             if (id == null)
             {
                 //create
+                ViewData["Title"] = "Thêm sản phẩm";
                 return View(Product);
             }
             //update
+            ViewData["Title"] = "Cập nhật sản phẩm";
             Product = _db.Products.FirstOrDefault(u => u.Id == id);
             if (Product == null)
             {
@@ -115,6 +117,20 @@ namespace ShopAsp.NetCore.Controllers
             _db.Products.Remove(productbookFromDb);
             await _db.SaveChangesAsync();
             return Json(new { success = true, message = "Delete successful" });
+        }
+        [HttpPost]
+        public async Task<IActionResult> UpdateCheck(int id, bool data, string colName)
+        {
+            var ProductFromDb = await _db.Products.FirstOrDefaultAsync(u => u.Id == id);
+            if (ProductFromDb == null)
+            {
+                return Json(new { success = false, Message = "Không tìm thấy sản phẩm" });
+            }
+            if (colName == "HotProduct") ProductFromDb.HotProduct = data;
+            if (colName == "NewProduct") ProductFromDb.NewProduct = data;
+            _db.Products.Update(ProductFromDb);
+            await _db.SaveChangesAsync();
+            return Json(new { success = false, Message = "Cập nhật thành công" });
         }
         #endregion
     }

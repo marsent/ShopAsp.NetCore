@@ -1,7 +1,9 @@
-﻿
-@model ShopAsp.NetCore.Models.Product
+﻿@model ShopAsp.NetCore.Models.Product
+@{
+    Layout = "_Layout";
+}
 <br />
-<h2 class="text-info">@(Model.Id!=0 ? "Chỉnh sửa" : "Tạo") Sản phẩm</h2>
+<h2 class="text-info container">@(Model.Id!=0 ? "Chỉnh sửa" : "Tạo") Sản phẩm</h2>
 <br />
 
 <div class="border container" style="padding:30px;">
@@ -46,7 +48,7 @@
                 <label asp-for="Description"></label>
             </div>
             <div class="col-6">
-                <textarea asp-for="Description" class="form-control" ></textarea>
+                <textarea asp-for="Description" class="form-control" rows="5"></textarea>
             </div>
 
         </div>
