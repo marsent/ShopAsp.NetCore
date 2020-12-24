@@ -2,11 +2,12 @@
 @{
     Layout = "_Layout";
 }
-<br />
+
+
 <h2 class="text-info container">@(Model.Id!=0 ? "Chỉnh sửa" : "Tạo") Sản phẩm</h2>
-<br />
 
 <div class="border container" style="padding:30px;">
+
     <form method="post" enctype="multipart/form-data" asp-controller="Admin">
         @if (Model.Id != 0)
         {
@@ -63,9 +64,10 @@
                 }
                 else
                 {
-                    <input asp-for="ImageFile" type="file" accept="image/*" required />
+                    <input asp-for="ImageFile" type="file" accept="image/*" required/>
+                    
+
                 }
-                me
             </div>
         </div>
 

@@ -47,7 +47,6 @@ namespace ShopAsp.NetCore.Controllers
                     User.Password = BC.HashPassword(User.Password);
                     _db.Add(User);
                     _db.SaveChanges();
-                    TempData["Success"] = "Tạo tài khoản thành công";
                     return RedirectToAction("Login");
                 }
                 else
@@ -61,7 +60,6 @@ namespace ShopAsp.NetCore.Controllers
         }
         public IActionResult Login()
         {
-            ViewBag.Success = TempData["Success"];
             ViewData["Title"] = "Đăng nhập";
 
             return View();
@@ -77,7 +75,7 @@ namespace ShopAsp.NetCore.Controllers
             {
                 HttpContext.Session.SetInt32("IsLogin", 1);
                 HttpContext.Session.SetInt32("Id", account.Id);
-                HttpContext.Session.SetString("FullName", (string)(account.FirstName + " " + account.LastName));
+                HttpContext.Session.SetString("FullName", (string)(account.LastName + " " + account.FirstName));
                 HttpContext.Session.SetString("Email", account.Email);
                 HttpContext.Session.SetInt32("Role", account.Role);
                 return RedirectToAction("Index");

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using ShopAsp.NetCore.Models;
@@ -19,14 +20,18 @@ namespace ShopAsp.NetCore.Controllers
         {
             _db = db;
         }
+       
         public IActionResult Index()
         {
+            if (HttpContext.Session.GetInt32("IsLogin") != 1) return RedirectToAction("Login", "Authentication");
+            ViewData["FullName"]=HttpContext.Session.GetString("FullName");
             ViewData["Title"] = "Quản lý sản phẩm";
             return View();
 
         }
         public IActionResult Upsert(int? id)
         {
+            if (HttpContext.Session.GetInt32("IsLogin") != 1) return RedirectToAction("Login", "Authentication");
             Product = new Product();
             if (id == null)
             {

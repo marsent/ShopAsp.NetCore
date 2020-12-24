@@ -58,37 +58,7 @@
         </div>
 
     </div>
-    @if (ViewBag.error != null)
-    {
-        <script type="text/javascript">
-
-            window.onload = function () {
-                swal({
-                    title: "Tạo tài khoản thành công",
-                    text: "@Html.Raw(ViewBag.error)",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true
-                })
-            };
-        </script>
-
-    }
-    @if (ViewBag.Success != null)
-    {
-        <script type="text/javascript">
-
-            window.onload = function () {
-                swal({
-                    title: "Tạo tài khoản thất bại",
-                    text: "@Html.Raw(ViewBag.Success)",
-                    icon: "success",
-                    buttons: true,
-                })
-            };
-        </script>
-
-    }
+   
 </div>
 @section Scripts{
     <partial name="_ValidationScriptsPartial" />

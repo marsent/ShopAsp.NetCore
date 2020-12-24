@@ -17,7 +17,7 @@ namespace ShopAsp.NetCore.Models
         [EmailAddress(ErrorMessage = "Sai cấu trúc email")]
         public string Email { get; set; }
         [Required(ErrorMessage = "Chưa nhập mật khẩu")]
-        [RegularExpression(@"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$", ErrorMessage = "Ít nhất 6 ký tự bao gòm chữ và số")]
+        [RegularExpression(@"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$", ErrorMessage = "Ít nhất 8 ký tự bao gòm chữ và số")]
         public string Password { get; set; }
         [NotMapped]
         [Required(ErrorMessage = "Chưa nhập mật khẩu")]
