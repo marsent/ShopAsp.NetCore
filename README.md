@@ -6,11 +6,18 @@ Microsoft.EntityFrameworkCore;
 password encrypt Bcrypt.Net.Next
 
 ##SQL server
-connectionsString:"Server=sql.freeasphost.net\\MSSQL2016;Database=tuananh8423_ShopAspNetCore;User ID=tuananh8423;Password=q123456789;MultipleActiveResultSets=True"
+connectionsString:"Server=sql.freeasphost.net\\MSSQL2016;Database=tuananh8423_ShopAspNetCore;User ID=tuananh8423;Password=;MultipleActiveResultSets=True"
+
 username:tuananh8423
-password:q123456789
+
+password:
+
 
 ##Web account
+
 username:tuananh8423@gmail.com
+
 password:q12345678
+
 Role:admin
+
