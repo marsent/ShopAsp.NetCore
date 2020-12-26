@@ -1,27 +1,81 @@
 ﻿@{ Layout = "_Layout"; }
-<div class="row justify-content-md-start">
-    <div class="col-md-4">
-        <div class="card">
-            <div class="card-header">
-                Wellcome
-            </div>
-            <div class="card-body">
-                <p>Id: @ViewBag.Id</p>
-                <p>Name: @ViewBag.Name</p>
-                <p>Email:  @ViewBag.Email</p>
-                @if (ViewBag.Role == 1)
-                {
-                    <p>Role: Admin</p>
-                }
-                else
-                {
-                    <p>Role: Customer</p>
-                }
-                <a asp-action="Logout" class="btn btn-warning">Logout</a>
-                <a asp-controller="Admin" asp-action="Index" class="btn btn-success">Trang quản lý</a>
 
+    <!-- Owl-carousel -->
+    <section id="banner-area">
+        <div class="owl-carousel owl-theme owl-loaded owl-drag">
+
+            <div class="owl-stage-outer">
+                <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 1126px;">
+                    <div class="owl-item active" style="width: 375.2px;">
+                        <div class="item">
+                            <img src="~/assets/Banner1.png" alt="Banner1">
+                        </div>
+                    </div><div class="owl-item" style="width: 375.2px;">
+                        <div class="item">
+                            <img src="~/assets/Banner2.png" alt="Banner2">
+                        </div>
+                    </div><div class="owl-item" style="width: 375.2px;">
+                        <div class="item">
+                            <img src="~/assets/Banner1.png" alt="Banner3">
+                        </div>
+                    </div>
+                </div>
+            </div><div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div>
+        </div>
+    </section>
+    <section id="top-sale">
+        <div class="container py-5">
+            <h4 class="font-rubik font-size-20">Khuyến Mãi Hot</h4>
+            <hr>
+            <div class="owl-carousel owl-theme owl-loaded owl-drag">
+                <div class="owl-stage-outer">
+                    <div class="owl-stage" style="transform: translate3d(-552px, 0px, 0px); transition: all 0s ease 0s; width: 2141px;">
+                        
+                    </div>
+                </div>
             </div>
         </div>
-
-    </div>
-</div>
+    </section>
+    <section id="new-phone">
+        <div class="container py-5">
+            <h4 class="font-rubik font-size-20">Sản Phẩm Nổi Bật Nhất</h4>
+            <hr>
+            <!-- owl carousel -->
+            <div class="owl-carousel owl-theme owl-loaded owl-drag">
+                <div class="owl-stage-outer">
+                    <div class="owl-stage" style="transform: translate3d(-552px, 0px, 0px); transition: all 0s ease 0s; width: 2141px;">
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="new-phone">
+        <div class="container py-5">
+            <h4 class="font-rubik font-size-20">Samsung</h4>
+            <hr>
+            <!-- owl carousel -->
+            <div class="owl-carousel owl-theme owl-loaded owl-drag">
+                <div class="owl-stage-outer">
+                    <div class="owl-stage" style="transform: translate3d(-552px, 0px, 0px); transition: all 0s ease 0s; width: 2141px;">
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="new-phone">
+        <div class="container py-5">
+            <h4 class="font-rubik font-size-20">Apple</h4>
+            <hr>
+            <!-- owl carousel -->
+            <div class="owl-carousel owl-theme owl-loaded owl-drag">
+                <div class="owl-stage-outer">
+                    <div class="owl-stage" style="transform: translate3d(-552px, 0px, 0px); transition: all 0s ease 0s; width: 2141px;">
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br>

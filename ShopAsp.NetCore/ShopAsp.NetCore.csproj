@@ -5,6 +5,56 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\assets\Banner1 - Copy.png" />
+    <Content Remove="wwwroot\assets\banner1-cr-500x150.jpg" />
+    <Content Remove="wwwroot\assets\Banner1.png" />
+    <Content Remove="wwwroot\assets\banner2-cr-500x150.jpg" />
+    <Content Remove="wwwroot\assets\Banner2.png" />
+    <Content Remove="wwwroot\assets\cam-on.png" />
+    <Content Remove="wwwroot\assets\dang-ky.jpg" />
+    <Content Remove="wwwroot\assets\dang-nhap.jpg" />
+    <Content Remove="wwwroot\assets\empty_cart.png" />
+    <Content Remove="wwwroot\assets\products\1.png" />
+    <Content Remove="wwwroot\assets\products\10.png" />
+    <Content Remove="wwwroot\assets\products\11.png" />
+    <Content Remove="wwwroot\assets\products\12.png" />
+    <Content Remove="wwwroot\assets\products\13.png" />
+    <Content Remove="wwwroot\assets\products\14.png" />
+    <Content Remove="wwwroot\assets\products\15.png" />
+    <Content Remove="wwwroot\assets\products\2.png" />
+    <Content Remove="wwwroot\assets\products\3.png" />
+    <Content Remove="wwwroot\assets\products\4.png" />
+    <Content Remove="wwwroot\assets\products\5.png" />
+    <Content Remove="wwwroot\assets\products\6.png" />
+    <Content Remove="wwwroot\assets\products\8.png" />
+    <Content Remove="wwwroot\assets\products\iphone-11-128gb-green-600x600.jpg" />
+    <Content Remove="wwwroot\assets\products\iphone-11-256gb-black-600x600.jpg" />
+    <Content Remove="wwwroot\assets\products\iphone-11-pro-256gb-black-600x600.jpg" />
+    <Content Remove="wwwroot\assets\products\iphone-11-pro-black-600x600.jpg" />
+    <Content Remove="wwwroot\assets\products\iphone-11-pro-max-(21).jpg" />
+    <Content Remove="wwwroot\assets\products\iphone-11-pro-max-256gb-black-600x600.jpg" />
+    <Content Remove="wwwroot\assets\products\iphone-11-pro-max-512gb-gold-600x600.jpg" />
+    <Content Remove="wwwroot\assets\products\iphone-xs-max-256gb-white-600x600.jpg" />
+    <Content Remove="wwwroot\assets\products\samsung-galaxy-a31-(15).jpg" />
+    <Content Remove="wwwroot\assets\products\samsung-galaxy-a51-8gb-(13).jpg" />
+    <Content Remove="wwwroot\assets\products\samsung-galaxy-a80-050320-050301-600x600.jpg" />
+    <Content Remove="wwwroot\assets\products\samsung-galaxy-fold-black-600x600.jpg" />
+    <Content Remove="wwwroot\assets\products\samsung-galaxy-note-10-silver-600x600.jpg" />
+    <Content Remove="wwwroot\assets\products\samsung-galaxy-s10-lite-blue-thumb-600x600.jpg" />
+    <Content Remove="wwwroot\assets\products\samsung-galaxy-s10-plus-white-600x600.jpg" />
+    <Content Remove="wwwroot\assets\products\samsung-galaxy-z-flip-den-600x600-600x600.jpg" />
+    <Content Remove="wwwroot\assets\products\uploaded_5f0910c9984d71.15166210.png" />
+    <Content Remove="wwwroot\assets\products\uploaded_5f091ecea664c3.51934436.png" />
+    <Content Remove="wwwroot\assets\products\uploaded_5f10fbb6bdbb45.03928065.jpg" />
+    <Content Remove="wwwroot\assets\products\uploaded_5f10fd20e6f6e9.70558839.jpg" />
+    <Content Remove="wwwroot\assets\products\uploaded_5f10fd5655f6f2.28823513.jpg" />
+    <Content Remove="wwwroot\assets\products\uploaded_5f10fd9d5ea5f6.73004962.png" />
+    <Content Remove="wwwroot\assets\products\uploaded_5f10fda63e1773.69517861.png" />
+    <Content Remove="wwwroot\assets\products\uploaded_5f10fdffb6b765.93486478.jpg" />
+    <Content Remove="wwwroot\assets\signup-image.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.10" />
@@ -17,6 +67,56 @@
 
   <ItemGroup>
     <Folder Include="Views\NewFolder\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\assets\Banner1 - Copy.png" />
+    <None Include="wwwroot\assets\banner1-cr-500x150.jpg" />
+    <None Include="wwwroot\assets\Banner1.png" />
+    <None Include="wwwroot\assets\banner2-cr-500x150.jpg" />
+    <None Include="wwwroot\assets\Banner2.png" />
+    <None Include="wwwroot\assets\cam-on.png" />
+    <None Include="wwwroot\assets\dang-ky.jpg" />
+    <None Include="wwwroot\assets\dang-nhap.jpg" />
+    <None Include="wwwroot\assets\empty_cart.png" />
+    <None Include="wwwroot\assets\products\1.png" />
+    <None Include="wwwroot\assets\products\10.png" />
+    <None Include="wwwroot\assets\products\11.png" />
+    <None Include="wwwroot\assets\products\12.png" />
+    <None Include="wwwroot\assets\products\13.png" />
+    <None Include="wwwroot\assets\products\14.png" />
+    <None Include="wwwroot\assets\products\15.png" />
+    <None Include="wwwroot\assets\products\2.png" />
+    <None Include="wwwroot\assets\products\3.png" />
+    <None Include="wwwroot\assets\products\4.png" />
+    <None Include="wwwroot\assets\products\5.png" />
+    <None Include="wwwroot\assets\products\6.png" />
+    <None Include="wwwroot\assets\products\8.png" />
+    <None Include="wwwroot\assets\products\iphone-11-128gb-green-600x600.jpg" />
+    <None Include="wwwroot\assets\products\iphone-11-256gb-black-600x600.jpg" />
+    <None Include="wwwroot\assets\products\iphone-11-pro-256gb-black-600x600.jpg" />
+    <None Include="wwwroot\assets\products\iphone-11-pro-black-600x600.jpg" />
+    <None Include="wwwroot\assets\products\iphone-11-pro-max-(21).jpg" />
+    <None Include="wwwroot\assets\products\iphone-11-pro-max-256gb-black-600x600.jpg" />
+    <None Include="wwwroot\assets\products\iphone-11-pro-max-512gb-gold-600x600.jpg" />
+    <None Include="wwwroot\assets\products\iphone-xs-max-256gb-white-600x600.jpg" />
+    <None Include="wwwroot\assets\products\samsung-galaxy-a31-(15).jpg" />
+    <None Include="wwwroot\assets\products\samsung-galaxy-a51-8gb-(13).jpg" />
+    <None Include="wwwroot\assets\products\samsung-galaxy-a80-050320-050301-600x600.jpg" />
+    <None Include="wwwroot\assets\products\samsung-galaxy-fold-black-600x600.jpg" />
+    <None Include="wwwroot\assets\products\samsung-galaxy-note-10-silver-600x600.jpg" />
+    <None Include="wwwroot\assets\products\samsung-galaxy-s10-lite-blue-thumb-600x600.jpg" />
+    <None Include="wwwroot\assets\products\samsung-galaxy-s10-plus-white-600x600.jpg" />
+    <None Include="wwwroot\assets\products\samsung-galaxy-z-flip-den-600x600-600x600.jpg" />
+    <None Include="wwwroot\assets\products\uploaded_5f0910c9984d71.15166210.png" />
+    <None Include="wwwroot\assets\products\uploaded_5f091ecea664c3.51934436.png" />
+    <None Include="wwwroot\assets\products\uploaded_5f10fbb6bdbb45.03928065.jpg" />
+    <None Include="wwwroot\assets\products\uploaded_5f10fd20e6f6e9.70558839.jpg" />
+    <None Include="wwwroot\assets\products\uploaded_5f10fd5655f6f2.28823513.jpg" />
+    <None Include="wwwroot\assets\products\uploaded_5f10fd9d5ea5f6.73004962.png" />
+    <None Include="wwwroot\assets\products\uploaded_5f10fda63e1773.69517861.png" />
+    <None Include="wwwroot\assets\products\uploaded_5f10fdffb6b765.93486478.jpg" />
+    <None Include="wwwroot\assets\signup-image.jpg" />
   </ItemGroup>
 
 </Project>

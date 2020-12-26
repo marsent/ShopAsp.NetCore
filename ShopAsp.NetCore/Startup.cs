@@ -58,7 +58,7 @@ namespace ShopAsp.NetCore
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Authentication}/{action=Index}");
+                    pattern: "{controller=Customer}/{action=Index}");
             });
         }
     }
