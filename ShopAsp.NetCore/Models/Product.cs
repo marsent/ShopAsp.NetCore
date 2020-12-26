@@ -35,7 +35,11 @@ namespace ShopAsp.NetCore.Models
         [Column(TypeName = "smalldatetime")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DateUpdate { get; set; }
-        public bool NewProduct { get; set; }
+        [Display(Name = "Sản phẩm nổi bậc")]
+        public bool OutstandingProducts { get; set; }
+        [Display(Name = "Khuyến mãi hot")]
         public bool HotProduct { get; set; }
+        public List<Cart> Carts { get; set; }
+        public List<BillDetail> BillDetails { get; set; }
     }
 }

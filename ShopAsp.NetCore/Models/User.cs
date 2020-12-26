@@ -30,5 +30,7 @@ namespace ShopAsp.NetCore.Models
         public string LastName { get; set; }
         [DefaultValue(0)]
         public int Role { get; set; }
+        public List<Cart> Carts { get; set; }
+        public List<Bill> Bills { get; set; }
     }
 }

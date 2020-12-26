@@ -132,7 +132,7 @@ namespace ShopAsp.NetCore.Controllers
                 return Json(new { success = false, Message = "Không tìm thấy sản phẩm" });
             }
             if (colName == "HotProduct") ProductFromDb.HotProduct = data;
-            if (colName == "NewProduct") ProductFromDb.NewProduct = data;
+            if (colName == "OutstandingProducts") ProductFromDb.OutstandingProducts = data;
             _db.Products.Update(ProductFromDb);
             await _db.SaveChangesAsync();
             return Json(new { success = false, Message = "Cập nhật thành công" });

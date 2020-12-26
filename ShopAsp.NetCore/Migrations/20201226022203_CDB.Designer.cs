@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShopAsp.NetCore.Models;
 
 namespace ShopAsp.NetCore.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201226022203_CDB")]
+    partial class CDB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -193,7 +195,7 @@ namespace ShopAsp.NetCore.Migrations
                     b.HasOne("ShopAsp.NetCore.Models.User", "Users")
                         .WithMany("Bills")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
@@ -202,13 +204,13 @@ namespace ShopAsp.NetCore.Migrations
                     b.HasOne("ShopAsp.NetCore.Models.Bill", "Bills")
                         .WithMany("BillDetails")
                         .HasForeignKey("BillId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ShopAsp.NetCore.Models.Product", "Products")
                         .WithMany("BillDetails")
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
@@ -223,7 +225,7 @@ namespace ShopAsp.NetCore.Migrations
                     b.HasOne("ShopAsp.NetCore.Models.User", "Users")
                         .WithMany("Carts")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

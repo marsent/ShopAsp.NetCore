@@ -36,11 +36,11 @@ function loadDataTable() {
                 }
             },
             {
-                "data": "newProduct",
+                "data": "OutstandingProductsutstandingProducts",
                 "width": "5%",
                 "render": function (data) {
-                    if (data == true) return `<input onchange=UpdateCheck(this,"NewProduct") type="checkbox" value=${data} checked/>`
-                    else return `<input onchange=UpdateCheck(this,"NewProduct") type="checkbox" value=${data}/>`
+                    if (data == true) return `<input onchange=UpdateCheck(this,"OutstandingProducts") type="checkbox" value=${data} checked/>`
+                    else return `<input onchange=UpdateCheck(this,"OutstandingProducts") type="checkbox" value=${data}/>`
                 }
             },
             {
