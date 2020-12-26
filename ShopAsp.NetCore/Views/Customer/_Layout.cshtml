@@ -19,7 +19,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <!-- Custom CSS file -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="~/css/mycustom.css">
     <style>
         .navbar-dark .navbar-nav .nav-link:focus, .navbar-dark .navbar-nav .nav-link:hover {
             color: rgba(255, 255, 255, 0.9);
@@ -40,41 +40,41 @@
                 <span class="d-none d-md-block ">Khu phố 6 - Phường Linh Trung - Quận Thủ Đức - TPHCM. Tel: (028). 38.973.921</span>
             </p>
             <div class="font-rale font-size-14">
-                <?php Login();?>
+              
             </div>
         </div>
 
         <!-- Primary Navigation -->
         <nav class="navbar navbar-expand-lg navbar-dark color-second-bg">
-            <a class="navbar-brand" href="../trang-chu">Tý Mobile</a>
+            <a class="navbar-brand" href="#">Tý Mobile</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="nav navbar-nav m-auto font-rubik" style="margin-left: 5">
                     <li class="nav-item">
-                        <a class="nav-link" href="../trang-chu">Trang chủ</a>
+                        <a class="nav-link" href="#">Trang chủ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../san-pham">Tất cả sản phẩm</a>
+                        <a class="nav-link" href="#">Tất cả sản phẩm</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../gio-hang">Giỏ hàng</i></a>
+                        <a class="nav-link" href="#">Giỏ hàng</i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../tai-khoan">Tài khoản</a>
+                        <a class="nav-link" href="#">Tài khoản</a>
                     </li>
                 </ul>
-                <form class="form-inline" action="../san-pham">
+                <form class="form-inline" action="#">
                     <div class="form-group" style="display: flex; align-items: center; position:relative; top: 8px;">
                         <input class="form-control" name="key" type="search" placeholder="Tìm sản phẩm..." aria-label="Search" style="height: calc(1.2em + 2px + 0.75rem);">
                         <button class="btn btn-outline-info" type="submit" style="margin: 0 10px"><i class="fa fa-search" aria-hidden="true"></i></button>
                     </div>
                 </form>
-                <form action="../gio-hang" class="font-size-14 font-rale" style="position:relative; top: 8px;">
-                    <a href="../gio-hang" class="py-2 rounded-pill color-primary-bg">
+                <form action="#" class="font-size-14 font-rale" style="position:relative; top: 8px;">
+                    <a href="#" class="py-2 rounded-pill color-primary-bg">
                         <span class="font-size-16 px-2 text-white"><i class="fas fa-shopping-cart"></i></span>
-                        <span id="totalItems" class="px-3 py-2 rounded-pill text-dark bg-light">
+                        <span id="totalItems" class="px-3 py-2 rounded-pill text-dark bg-light">0
                         </span>
                     </a>
                 </form>
@@ -82,9 +82,9 @@
         </nav>
         <!-- !Primary Navigation -->
     </header>
-    <div>
+    <main>
         @RenderBody()
-    </div>
+    </main>
 
     <footer id="footer" class="bg-dark text-white py-5">
         <div class="container">
@@ -141,17 +141,32 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
 
     <!-- Custom Javascript -->
-    <script src="index.js"></script>
     <script type="text/javascript">
+      
         $(document).ready(function () {
-            var url = window.location;
-            var hrefArray = url.href.split('/');
-            var path = '../' + hrefArray[hrefArray.length - 2];
-            console.log(path);
-            $('ul.nav a[href="' + path + '"]').parent().addClass('active');
-            $('ul.nav a').filter(function () {
-                return this.href == path;
-            }).parent().addClass('active');
+            $("#banner-area .owl-carousel").owlCarousel({
+                dots: true,
+                items: 1
+            });
+
+            $(".owl-carousel").owlCarousel({
+                loop: false,
+                dots: false,
+                responsive: {
+                    0: {
+                        items: 2,
+                        nav: false
+                    },
+                    600: {
+                        items: 3,
+                        nav: true
+                    },
+                    1000: {
+                        items: 5,
+                        nav: true
+                    }
+                }
+            });
         });
     </script>
 </body>
