@@ -1,0 +1,141 @@
+﻿@model IEnumerable<ShopAsp.NetCore.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<section>
+    <div class="container">
+        <div>
+            <div class="row mt-5">
+                <div class="row col-lg-3 col-md-4 col-sm-6 filter-el">
+                    <div class="">
+                        <nav class="">Tìm thấy kết quả cho <span id="key"></span></nav>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-4 col-sm-6">
+                    <form id="filter" method="get">
+                        <div class="form-group row filter-el">
+                            <label class="mr-2">Sắp xếp theo: </label>
+                            <select id="orderby" name="orderby">
+                                <option value="price">Giá thấp đến cao</option>
+                                <option value="price-desc">Giá cao xuống thấp</option>
+                                <option value="date">Mới nhất</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="ProductList" style="min-height: 850px; margin: 20px auto;">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="item py-2" style="margin: auto; max-width: 250px;margin-bottom:20px;margin-top:0px; ">
+                        <div class="product font-rale ">
+                            <a href="Products/Details/?id=@Html.DisplayFor(modelItem => item.Id)"><img class="img-fluid " style="transform: scale(1);" onmouseover="this.style='transform:scale(1.15,1.15)'" onmouseout="this.style='transform:scale(1,1)'" alt="product @Html.DisplayFor(modelItem => item.Id)" src="@Html.DisplayFor(modelItem => item.ImageUrl)"></a>
+                            <div class="text-center ">
+                                <h6 style="margin-top: 25px;">@Html.DisplayFor(modelItem => item.Name)</h6>
+                                <div class="rating text-warning font-size-12">
+                                    <span><i class="fas fa-star"></i></span>
+                                    <span><i class="fas fa-star"></i></span>
+                                    <span><i class="fas fa-star"></i></span>
+                                    <span><i class="fas fa-star"></i></span>
+                                    <span><i class="far fa-star"></i></span>
+                                </div>
+                                <div class="price py-2 "><span style="font-size:20px;color:red;">@Html.DisplayFor(modelItem => item.Price) đ</span></div>
+                                <button type="submit" name="top_sale_submit" onclick="addToCart(1, @Html.DisplayFor(modelItem => item.Price), 1)" class="btn btn-warning font-size-12">Thêm vào giỏ</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+        <div class="row" id="PageList">
+            <ul class="pagination justify-content-end" id="Page" style="margin: 20px auto;"></ul>
+        </div>
+    </div>
+</section>
+
+@*<h1>Index</h1>
+
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Brand)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ImageUrl)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateCreate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateUpdate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OutstandingProducts)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HotProduct)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Brand)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ImageUrl)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateCreate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateUpdate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OutstandingProducts)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HotProduct)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+*@
