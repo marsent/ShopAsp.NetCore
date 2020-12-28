@@ -24,22 +24,39 @@ namespace ShopAsp.NetCore.Controllers
         public async Task<IActionResult> Index()
         {
             // Use LINQ to get list of genres.
+
             
+            if (HttpContext.Session.GetString("FullName") != null)
+            {
+                ViewData["UserId"] = HttpContext.Session.GetInt32("Id");
 
-            var movies = from m in _context.Products
-                         select m;
+                ViewData["FullName"] = HttpContext.Session.GetString("FullName");
+            }
+            else
+            {
+                ViewData["UserId"] = -1;
 
-            ViewData["OutstandingProducts"] = movies.Where(s => s.OutstandingProducts == true);
+                var items = from m in _context.Carts
+                             select m;
 
-            ViewData["HotProduct"] = movies.Where(s => s.HotProduct == true);
+                var cart =  items.Where(x => x.UserId == HttpContext.Session.GetInt32("Id"));
 
-            ViewData["Samsung"] = movies.Where(s => s.Brand == "Samsung");
+                ViewData["Cart"] = cart.Select(x => x.Quantity).Sum();
+            }
 
-            ViewData["Apple"] = movies.Where(s => s.Brand == "Apple");
+            var products = from p in _context.Products
+                         select p;
+
+            ViewData["OutstandingProducts"] = products.Where(s => s.OutstandingProducts == true);
+
+            ViewData["HotProduct"] = products.Where(s => s.HotProduct == true);
+
+            ViewData["Samsung"] = products.Where(s => s.Brand == "Samsung");
+
+            ViewData["Apple"] = products.Where(s => s.Brand == "Apple");
 
             return View();
         }
-
 
     }
     

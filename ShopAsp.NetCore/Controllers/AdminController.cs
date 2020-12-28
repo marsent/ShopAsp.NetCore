@@ -27,7 +27,6 @@ namespace ShopAsp.NetCore.Controllers
             ViewData["FullName"]=HttpContext.Session.GetString("FullName");
             ViewData["Title"] = "Quản lý sản phẩm";
             return View();
-
         }
         public IActionResult Upsert(int? id)
         {

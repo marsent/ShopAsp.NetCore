@@ -1276,7 +1276,6 @@ C:\Users\Anh\Desktop\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Raz
 C:\Users\Anh\Desktop\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Razor\Views\Authentication\Register.cshtml.g.cs
 C:\Users\Anh\Desktop\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Razor\Views\Authentication\_Layout.cshtml.g.cs
 C:\Users\Anh\Desktop\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Razor\Views\Customer\Index.cshtml.g.cs
-C:\Users\Anh\Desktop\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Razor\Views\Customer\_Layout.cshtml.g.cs
 C:\Users\Anh\Desktop\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\Anh\Desktop\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\Anh\Desktop\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Razor\Views\Products\Details.cshtml.g.cs
@@ -1296,3 +1295,4 @@ C:\Users\Anh\Desktop\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\sta
 C:\Users\Anh\Desktop\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\ShopAsp.NetCore.dll
 C:\Users\Anh\Desktop\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\ShopAsp.NetCore.pdb
 C:\Users\Anh\Desktop\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\ShopAsp.NetCore.genruntimeconfig.cache
+C:\Users\Anh\Desktop\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Razor\Views\Cart\Index.cshtml.g.cs

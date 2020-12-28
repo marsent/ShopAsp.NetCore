@@ -14,7 +14,6 @@
             <input type="hidden" asp-for="Id" />
             <input type="hidden" asp-for="DateCreate" />
             <input type="hidden" asp-for="ImageUrl" />
-
         }
         <div class="text-danger" asp-validation-summary="ModelOnly"></div>
         <div class="form-group row">
@@ -65,8 +64,6 @@
                 else
                 {
                     <input asp-for="ImageFile" type="file" accept="image/*" required/>
-                    
-
                 }
             </div>
         </div>

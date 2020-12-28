@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = "Giỏ hàng";
+}
+
+@model ShopAsp.NetCore.Models.CartItem
+
+@functions{
+    public void RenderCartItems(CartItem item)
+    {
+        <div class="owl-item">
+            <div class="item py-2">
+                <div class="product font-rale">
+                    <a href="../chi-tiet-san-pham/"><img src="@Html.DisplayFor(modelItem => item.Product.ImageUrl)" class="img-fluid"></a>
+                    <div class="text-center">
+                        <h6 style="margin-top: 15px">@Html.DisplayFor(modelItem => item.Product.Name)</h6>
+                        <div class="rating text-warning font-size-12">
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="far fa-star"></i></span>
+                        </div>
+                        <div class="price py-2">
+                            <span> @Html.DisplayFor(modelItem => item.Product.Price) đ</span>
+                        </div>
+                        <button type="submit" name="top_sale_submit" onclick="addToCart(@Html.DisplayFor(modelItem => item.Cart.UserId), @Html.DisplayFor(modelItem => item.Product.Id), 1)" class="btn btn-warning font-size-12">Thêm vào giỏ</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+<section id="cart" class="py-3">
+    <div class="container-fluid w-75">
+        <h5 class="font-baloo font-size-20">Giỏ Hàng</h5>
+        <div class="row">
+            @foreach (var item in Model as IEnumerable<ShopAsp.NetCore.Models.CartItem>)
+            {
+                RenderCartItems(item);
+            }
+        </div>
+    </div>
+</section>
+<section id="new-phone">
+    <div class="container py-5">
+        <h4 class="font-rubik font-size-20">Sản Phẩm Mới</h4>
+        <hr>
+        <div class="owl-carousel owl-theme owl-loaded owl-drag">
+            <div class="owl-stage-outer">
+                <div class="owl-stage" style="transform: translate3d(-552px, 0px, 0px); transition: all 0s ease 0s; width: 2141px;">
+                    @foreach (var item in ViewData["HotProducts"] as IEnumerable<ShopAsp.NetCore.Models.Product>)
+                    {
+                        <div class="owl-item">
+                            <div class="item py-2">
+                                <div class="product font-rale">
+                                    <a href="../chi-tiet-san-pham/"><img src="@Html.DisplayFor(modelItem => item.ImageUrl)" class="img-fluid"></a>
+                                    <div class="text-center">
+                                        <h6 style="margin-top: 15px">@Html.DisplayFor(modelItem => item.Name)</h6>
+                                        <div class="rating text-warning font-size-12">
+                                            <span><i class="fas fa-star"></i></span>
+                                            <span><i class="fas fa-star"></i></span>
+                                            <span><i class="fas fa-star"></i></span>
+                                            <span><i class="fas fa-star"></i></span>
+                                            <span><i class="far fa-star"></i></span>
+                                        </div>
+                                        <div class="price py-2">
+                                            <span> @Html.DisplayFor(modelItem => item.Price) đ</span>
+                                        </div>
+                                        <button type="submit" name="top_sale_submit" onclick="addToCart($userId, $row[item_id], 1)" class="btn btn-warning font-size-12">Thêm vào giỏ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

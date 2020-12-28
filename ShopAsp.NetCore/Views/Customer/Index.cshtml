@@ -1,6 +1,33 @@
-﻿@{ Layout = "_Layout"; }
-@model IEnumerable<ShopAsp.NetCore.Models.Product>
-    <!-- Owl-carousel -->
+﻿@{
+    ViewData["Title"] = "Trang chủ";
+}
+
+@functions{
+    public void RenderProduct(Product item)
+    {
+        <div class="owl-item">
+            <div class="item py-2">
+                <div class="product font-rale">
+                    <a href="../chi-tiet-san-pham/"><img src="@Html.DisplayFor(modelItem => item.ImageUrl)" class="img-fluid"></a>
+                    <div class="text-center">
+                        <h6 style="margin-top: 15px">@Html.DisplayFor(modelItem => item.Name)</h6>
+                        <div class="rating text-warning font-size-12">
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="far fa-star"></i></span>
+                        </div>
+                        <div class="price py-2">
+                            <span> @Html.DisplayFor(modelItem => item.Price) đ</span>
+                        </div>
+                        <button type="submit" name="top_sale_submit" onclick="addToCart(@ViewData["UserId"], @Html.DisplayFor(modelItem => item.Id), 1)" class="btn btn-warning font-size-12">Thêm vào giỏ</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
 <section id="banner-area">
     <div class="owl-carousel owl-theme owl-loaded owl-drag">
 
@@ -34,27 +61,7 @@
                     <---></--->
                     @foreach (var item in ViewData["HotProduct"] as IEnumerable<ShopAsp.NetCore.Models.Product>)
                     {
-                        <div class="owl-item">
-                            <div class="item py-2">
-                                <div class="product font-rale">
-                                    <a href="../chi-tiet-san-pham/"><img src="@Html.DisplayFor(modelItem => item.ImageUrl)" class="img-fluid"></a>
-                                    <div class="text-center">
-                                        <h6 style="margin-top: 15px">@Html.DisplayFor(modelItem => item.ImageUrl)</h6>
-                                        <div class="rating text-warning font-size-12">
-                                            <span><i class="fas fa-star"></i></span>
-                                            <span><i class="fas fa-star"></i></span>
-                                            <span><i class="fas fa-star"></i></span>
-                                            <span><i class="fas fa-star"></i></span>
-                                            <span><i class="far fa-star"></i></span>
-                                        </div>
-                                        <div class="price py-2">
-                                            <span> @Html.DisplayFor(modelItem => item.Price) đ</span>
-                                        </div>
-                                        <button type="submit" name="top_sale_submit" onclick="addToCart($userId, $row[item_id], 1)" class="btn btn-warning font-size-12">Thêm vào giỏ</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        RenderProduct(item);
                     }
 
                 </div>
@@ -72,27 +79,7 @@
                 <div class="owl-stage" style="transform: translate3d(-552px, 0px, 0px); transition: all 0s ease 0s; width: 2141px;">
                     @foreach (var item in ViewData["OutstandingProducts"] as IEnumerable<ShopAsp.NetCore.Models.Product>)
                     {
-                        <div class="owl-item">
-                            <div class="item py-2">
-                                <div class="product font-rale">
-                                    <a href="../chi-tiet-san-pham/"><img src="@Html.DisplayFor(modelItem => item.ImageUrl)" class="img-fluid"></a>
-                                    <div class="text-center">
-                                        <h6 style="margin-top: 15px">@Html.DisplayFor(modelItem => item.ImageUrl)</h6>
-                                        <div class="rating text-warning font-size-12">
-                                            <span><i class="fas fa-star"></i></span>
-                                            <span><i class="fas fa-star"></i></span>
-                                            <span><i class="fas fa-star"></i></span>
-                                            <span><i class="fas fa-star"></i></span>
-                                            <span><i class="far fa-star"></i></span>
-                                        </div>
-                                        <div class="price py-2">
-                                            <span> @Html.DisplayFor(modelItem => item.Price) đ</span>
-                                        </div>
-                                        <button type="submit" name="top_sale_submit" onclick="addToCart($userId, $row[item_id], 1)" class="btn btn-warning font-size-12">Thêm vào giỏ</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        RenderProduct(item);
                     }
                 </div>
             </div>
@@ -109,27 +96,7 @@
                 <div class="owl-stage" style="transform: translate3d(-552px, 0px, 0px); transition: all 0s ease 0s; width: 2141px;">
                     @foreach (var item in ViewData["Samsung"] as IEnumerable<ShopAsp.NetCore.Models.Product>)
                     {
-                        <div class="owl-item">
-                            <div class="item py-2">
-                                <div class="product font-rale">
-                                    <a href="../chi-tiet-san-pham/"><img src="@Html.DisplayFor(modelItem => item.ImageUrl)" class="img-fluid"></a>
-                                    <div class="text-center">
-                                        <h6 style="margin-top: 15px">@Html.DisplayFor(modelItem => item.ImageUrl)</h6>
-                                        <div class="rating text-warning font-size-12">
-                                            <span><i class="fas fa-star"></i></span>
-                                            <span><i class="fas fa-star"></i></span>
-                                            <span><i class="fas fa-star"></i></span>
-                                            <span><i class="fas fa-star"></i></span>
-                                            <span><i class="far fa-star"></i></span>
-                                        </div>
-                                        <div class="price py-2">
-                                            <span> @Html.DisplayFor(modelItem => item.Price) đ</span>
-                                        </div>
-                                        <button type="submit" name="top_sale_submit" onclick="addToCart($userId, $row[item_id], 1)" class="btn btn-warning font-size-12">Thêm vào giỏ</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        RenderProduct(item);
                     }
                 </div>
             </div>
@@ -146,27 +113,7 @@
                 <div class="owl-stage" style="transform: translate3d(-552px, 0px, 0px); transition: all 0s ease 0s; width: 2141px;">
                     @foreach (var item in ViewData["Apple"] as IEnumerable<ShopAsp.NetCore.Models.Product>)
                     {
-                        <div class="owl-item">
-                            <div class="item py-2">
-                                <div class="product font-rale">
-                                    <a href="../chi-tiet-san-pham/"><img src="@Html.DisplayFor(modelItem => item.ImageUrl)" class="img-fluid"></a>
-                                    <div class="text-center">
-                                        <h6 style="margin-top: 15px">@Html.DisplayFor(modelItem => item.ImageUrl)</h6>
-                                        <div class="rating text-warning font-size-12">
-                                            <span><i class="fas fa-star"></i></span>
-                                            <span><i class="fas fa-star"></i></span>
-                                            <span><i class="fas fa-star"></i></span>
-                                            <span><i class="fas fa-star"></i></span>
-                                            <span><i class="far fa-star"></i></span>
-                                        </div>
-                                        <div class="price py-2">
-                                            <span> @Html.DisplayFor(modelItem => item.Price) đ</span>
-                                        </div>
-                                        <button type="submit" name="top_sale_submit" onclick="addToCart($userId, $row[item_id], 1)" class="btn btn-warning font-size-12">Thêm vào giỏ</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        RenderProduct(item);
                     }
                 </div>
             </div>
