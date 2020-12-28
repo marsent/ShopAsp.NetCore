@@ -15,16 +15,32 @@ namespace ShopAsp.NetCore.Controllers
 {
     public class CustomerController : Controller
     {
-        public IActionResult Index()
+        private readonly AppDbContext _context;
+        public CustomerController(AppDbContext context)
         {
+            _context = context;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            // Use LINQ to get list of genres.
+            
+
+            var movies = from m in _context.Products
+                         select m;
+
+            ViewData["OutstandingProducts"] = movies.Where(s => s.OutstandingProducts == true);
+
+            ViewData["HotProduct"] = movies.Where(s => s.HotProduct == true);
+
+            ViewData["Samsung"] = movies.Where(s => s.Brand == "Samsung");
+
+            ViewData["Apple"] = movies.Where(s => s.Brand == "Apple");
+
             return View();
         }
-        private readonly AppDbContext _db;
-       
-        //[BindProperty]
-        //public User User { get; set; }
-                      
-     
+
+
     }
     
     
