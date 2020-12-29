@@ -167,7 +167,16 @@
                 if (parts.length === 2) return parts.pop().split(';').shift();
             }
 
-            $('#totalItems').html(getCookie("user").split("%2C").length);
+            // $('#totalItems').html(getCookie("user").split("%2C").length);
+
+            $.ajax({
+                type: 'get',
+                url: 'Cart/GetTotalItem',
+                data: {},
+                success: function (data) {
+                    $('#totalItems').html(data);
+                }
+            });
 
             $("#banner-area .owl-carousel").owlCarousel({
                 dots: true,

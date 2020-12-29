@@ -22,36 +22,31 @@ namespace ShopAsp.NetCore.Controllers
 
         public async Task<IActionResult> Index()
         {
+            var products = from p in _context.Products
+                           select p;
+
+            ViewData["HotProducts"] = products.Where(s => s.HotProduct == true);
+
             if (HttpContext.Session.GetString("FullName") != null)
             {
                 var cartItems = from cart in _context.Carts
                                 join product in _context.Products on cart.ProductId equals product.Id
-                                where cart.UserId == HttpContext.Session.GetInt32("Id")
                                 select new CartItem { Product = product, Cart = cart };
 
-                return View(cartItems);
+                ViewData["CartItems"] = cartItems.Where(s => s.Cart.UserId == HttpContext.Session.GetInt32("Id"));
             }
 
             return View();
         }
 
-        public string GetTotalItem(int userId)
+        public string GetTotalItem()
         {
-            if (userId != null)
+            if (HttpContext.Session.GetString("FullName") != null)
             {
-                var itemsNew = from m in _context.Carts
-                               select m;
+                var cartItems = from cart in _context.Carts
+                                select cart;
 
-                var cartTotal = itemsNew.Where(x => x.UserId == userId);
-
-                if (cartTotal != null)
-                {
-                    return cartTotal.Select(x => x.Quantity).Sum().ToString();
-                }
-                else
-                {
-                    return "0";
-                }
+                return cartItems.Where(s => s.UserId == HttpContext.Session.GetInt32("Id")).Select(s => s.Quantity).Sum().ToString();
             }
             else
             {
@@ -118,7 +113,7 @@ namespace ShopAsp.NetCore.Controllers
                 HttpContext.Response.Cookies.Append("user", combindedCart, cookieOptions);
                 return cart.Count.ToString();
             }
-            return GetTotalItem(userId);
+            return GetTotalItem();
         }
     }
 }
