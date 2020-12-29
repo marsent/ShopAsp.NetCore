@@ -26,7 +26,7 @@ namespace ShopAsp.NetCore.Controllers
             ViewBag.Name = HttpContext.Session.GetString("FullName");
             ViewBag.Email = HttpContext.Session.GetString("Email");
             ViewBag.Role = HttpContext.Session.GetInt32("Role"); ;
-            return View();
+            return RedirectToAction("Index", "Customer");
         }
         public IActionResult Register()
         {

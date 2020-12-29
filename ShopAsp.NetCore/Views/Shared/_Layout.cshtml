@@ -44,7 +44,7 @@
                 <span class="d-none d-md-block ">Khu phố 6 - Phường Linh Trung - Quận Thủ Đức - TPHCM. Tel: (028). 38.973.921</span>
             </p>
             <div class="font-rale font-size-14">
-                <a href="Authentication/Login" class="px-3 border-right border-left text-dark">Đăng nhập</a><a href="Authentication/Register" class="px-3 border-right border-left text-dark">Đăng ký</a>
+                <a asp-controller="Authentication" asp-action="Login" class="px-3 border-right border-left text-dark">Đăng nhập</a><a asp-controller="Authentication" asp-action="Register" class="px-3 border-right border-left text-dark">Đăng ký</a>
             </div>
         </div>
 
@@ -66,7 +66,7 @@
                         <a class="nav-link" href="../Cart">Giỏ hàng</i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../tai-khoan">Tài khoản</a>
+                        <a class="nav-link" asp-controller="User" asp-action="Index">Tài khoản</a>
                     </li>
                 </ul>
                 <form class="form-inline" action="../san-pham">

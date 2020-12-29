@@ -18,7 +18,7 @@ function loadDataTable() {
             {
                 "data": "imageUrl", "width": "30%",
                 "render": function (data, type, row) {
-                    return ` <img class="zoom" src="\\Public\\Images\\${data}" width='100%'/>`;
+                    return ` <img class="zoom" src="\\assets\\products\\${data}" width='100%'/>`;
                 }
             },
             { "data": "dateCreate", "width": "10%" },
@@ -36,7 +36,7 @@ function loadDataTable() {
                 }
             },
             {
-                "data": "OutstandingProductsutstandingProducts",
+                "data": "outstandingProducts",
                 "width": "5%",
                 "render": function (data) {
                     if (data == true) return `<input onchange=UpdateCheck(this,"OutstandingProducts") type="checkbox" value=${data} checked/>`
