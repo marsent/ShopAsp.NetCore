@@ -5,24 +5,33 @@
 @functions{
     public void RenderCartItem(CartItem item)
     {
-        <div class="owl-item">
-            <div class="item py-2">
-                <div class="product font-rale">
-                    <a href="../chi-tiet-san-pham/"><img src="@Html.DisplayFor(modelItem => item.Product.ImageUrl)" class="img-fluid"></a>
-                    <div class="text-center">
-                        <h6 style="margin-top: 15px">@Html.DisplayFor(modelItem => item.Product.Name)</h6>
-                        <div class="rating text-warning font-size-12">
-                            <span><i class="fas fa-star"></i></span>
-                            <span><i class="fas fa-star"></i></span>
-                            <span><i class="fas fa-star"></i></span>
-                            <span><i class="fas fa-star"></i></span>
-                            <span><i class="far fa-star"></i></span>
-                        </div>
-                        <div class="price py-2">
-                            <span> @Html.DisplayFor(modelItem => item.Product.Price) đ</span>
-                        </div>
-                        <button type="submit" name="top_sale_submit" onclick="addToCart(@Html.DisplayFor(modelItem => item.Cart.UserId), @Html.DisplayFor(modelItem => item.Product.Id), 1)" class="btn btn-warning font-size-12">Thêm vào giỏ</button>
+        <div class="row border-top py-3 mt-3">
+            <div class="col-xl-2 col-md-3">
+                <a href="/Product/@Html.DisplayFor(modelItem => item.Product.Id)"><img src="@Html.DisplayFor(modelItem => item.Product.ImageUrl)" style="height: 120px;" alt="cart1" class="img-fluid"></a>
+            </div>
+            <div class="col-xl-8 col-md-9">
+                <h5 class="font-baloo font-size-20">@Html.DisplayFor(modelItem => item.Product.Name)</h5>
+                <div class="d-flex">
+                    <div class="rating text-warning font-size-12">
+                        <span><i class="fas fa-star"></i></span>
+                        <span><i class="fas fa-star"></i></span>
+                        <span><i class="fas fa-star"></i></span>
+                        <span><i class="fas fa-star"></i></span>
+                        <span><i class="far fa-star"></i></span>
                     </div>
+                </div>
+                <div class="qty d-flex pt-2">
+                    <div class="d-flex font-rale w-25">
+                        <button class="qty-up border bg-light" onclick="addToCartReload((@Html.DisplayFor(modelItem => item.Cart.UserId), @Html.DisplayFor(modelItem => item.Product.Id), 1)" data-id="pro1"><i class="fas fa-angle-up"></i></button>
+                        <input style="min-width: 30px" type="text" data-id="pro1" class="qty_input border px-2 w-100 bg-light" disabled value="@Html.DisplayFor(modelItem => item.Cart.Quantity)" placeholder="1">
+                        <button data-id="pro1" onclick="addToCartReload((@Html.DisplayFor(modelItem => item.Cart.UserId), @Html.DisplayFor(modelItem => item.Product.Id), -1)" class="qty-down border bg-light"><i class="fas fa-angle-down"></i></button>
+                    </div>
+                    <button onclick="addToCartReload((@Html.DisplayFor(modelItem => item.Cart.UserId), @Html.DisplayFor(modelItem => item.Product.Id), -$row[quantity])" class="btn font-baloo text-danger px-3 ml-3">Xóa</button>
+                </div>
+            </div>
+            <div class="col-xl-2 col-md text-right">
+                <div class="font-size-20 text-danger font-baloo">
+                    <span class="product_price">@Html.DisplayFor(modelItem => item.Product.Price) đ</span>
                 </div>
             </div>
         </div>

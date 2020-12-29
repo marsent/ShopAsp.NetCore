@@ -39,23 +39,14 @@ namespace ShopAsp.NetCore.Controllers
             return View();
         }
 
-        public string GetTotalItem(int userId)
+        public string GetTotalItem()
         {
-            if (userId != null)
+            if (HttpContext.Session.GetString("FullName") != null)
             {
-                var itemsNew = from m in _context.Carts
-                               select m;
+                var cartItems = from cart in _context.Carts
+                                select cart;
 
-                var cartTotal = itemsNew.Where(x => x.UserId == userId);
-
-                if (cartTotal != null)
-                {
-                    return cartTotal.Select(x => x.Quantity).Sum().ToString();
-                }
-                else
-                {
-                    return "0";
-                }
+                return cartItems.Where(s => s.UserId == HttpContext.Session.GetInt32("Id")).Select(s => s.Quantity).Sum().ToString();
             }
             else
             {
@@ -122,7 +113,7 @@ namespace ShopAsp.NetCore.Controllers
                 HttpContext.Response.Cookies.Append("user", combindedCart, cookieOptions);
                 return cart.Count.ToString();
             }
-            return GetTotalItem(userId);
+            return GetTotalItem();
         }
     }
 }
