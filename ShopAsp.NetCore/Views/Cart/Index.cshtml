@@ -2,10 +2,8 @@
     ViewData["Title"] = "Giỏ hàng";
 }
 
-@model ShopAsp.NetCore.Models.CartItem
-
 @functions{
-    public void RenderCartItems(CartItem item)
+    public void RenderCartItem(CartItem item)
     {
         <div class="owl-item">
             <div class="item py-2">
@@ -34,9 +32,9 @@
     <div class="container-fluid w-75">
         <h5 class="font-baloo font-size-20">Giỏ Hàng</h5>
         <div class="row">
-            @foreach (var item in Model as IEnumerable<ShopAsp.NetCore.Models.CartItem>)
+            @foreach (var item in ViewData["CartItems"] as IEnumerable<ShopAsp.NetCore.Models.CartItem>)
             {
-                RenderCartItems(item);
+                RenderCartItem(item);
             }
         </div>
     </div>

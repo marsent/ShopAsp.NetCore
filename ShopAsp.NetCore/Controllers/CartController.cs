@@ -22,14 +22,18 @@ namespace ShopAsp.NetCore.Controllers
 
         public async Task<IActionResult> Index()
         {
+            var products = from p in _context.Products
+                           select p;
+
+            ViewData["HotProducts"] = products.Where(s => s.HotProduct == true);
+
             if (HttpContext.Session.GetString("FullName") != null)
             {
                 var cartItems = from cart in _context.Carts
                                 join product in _context.Products on cart.ProductId equals product.Id
-                                where cart.UserId == HttpContext.Session.GetInt32("Id")
                                 select new CartItem { Product = product, Cart = cart };
 
-                return View(cartItems);
+                ViewData["CartItems"] = cartItems.Where(s => s.Cart.UserId == HttpContext.Session.GetInt32("Id"));
             }
 
             return View();
