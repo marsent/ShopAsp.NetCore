@@ -359,7 +359,6 @@ E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netco
 E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\ShopAsp.NetCore.genruntimeconfig.cache
 E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index.cshtml.g.cs
 E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Upsert.cshtml.g.cs
-E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Razor\Views\Authentication\Index.cshtml.g.cs
 E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Razor\Views\Authentication\Login.cshtml.g.cs
 E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Razor\Views\Authentication\Register.cshtml.g.cs
 E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\BCrypt.Net-Next.dll
@@ -387,7 +386,6 @@ E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netco
 E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Razor\Views\Authentication\_Layout.cshtml.g.cs
 E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Razor\Views\Admin\_Layout.cshtml.g.cs
 E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Razor\Views\Customer\Index.cshtml.g.cs
-E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Razor\Views\Customer\_Layout.cshtml.g.cs
 C:\wamp64\www\Framework.NET\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\wamp64\www\Framework.NET\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\appsettings.json
 C:\wamp64\www\Framework.NET\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
@@ -1295,3 +1293,69 @@ C:\Users\Anh\Desktop\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Sho
 C:\Users\Anh\Desktop\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\ShopAsp.NetCore.pdb
 C:\Users\Anh\Desktop\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\ShopAsp.NetCore.genruntimeconfig.cache
 C:\Users\Anh\Desktop\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Razor\Views\Cart\Index.cshtml.g.cs
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.Workspaces.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\Microsoft.Data.Sqlite.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\Microsoft.DotNet.PlatformAbstractions.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Sqlite.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\dotnet-aspnet-codegenerator-design.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\NuGet.Frameworks.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\SQLitePCLRaw.batteries_v2.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\SQLitePCLRaw.nativelibrary.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\SQLitePCLRaw.core.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\SQLitePCLRaw.provider.dynamic_cdecl.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\System.Composition.AttributedModel.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\System.Composition.Convention.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\System.Composition.Hosting.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\System.Composition.Runtime.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\System.Composition.TypedParts.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\runtimes\alpine-x64\native\libe_sqlite3.so
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\runtimes\linux-arm\native\libe_sqlite3.so
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\runtimes\linux-arm64\native\libe_sqlite3.so
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\runtimes\linux-armel\native\libe_sqlite3.so
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\runtimes\linux-musl-x64\native\libe_sqlite3.so
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\libe_sqlite3.so
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\runtimes\linux-x86\native\libe_sqlite3.so
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\runtimes\osx-x64\native\libe_sqlite3.dylib
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\runtimes\win-arm\native\e_sqlite3.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\e_sqlite3.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\e_sqlite3.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\e_sqlite3.dll
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Razor\Views\Cart\Index.cshtml.g.cs
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Razor\Views\Products\Details.cshtml.g.cs
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Razor\Views\Products\Index.cshtml.g.cs
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Razor\Views\User\Index.cshtml.g.cs
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Razor\Views\User\UpdatePassword.cshtml.g.cs

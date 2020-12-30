@@ -25,11 +25,16 @@ namespace ShopAsp.NetCore.Models
         public string ConfirmPassword { get; set; }
 
         [Required(ErrorMessage = "Chưa nhập tên")]
+        [Display(Name = "Tên")]
         public string FirstName { get; set; }
         [Required(ErrorMessage = "Chưa nhập họ")]
+        [Display(Name = "Họ")]
         public string LastName { get; set; }
+        [Display(Name = "Địa chỉ")]
+        public string Address { get; set; }
         [DefaultValue(0)]
         public int Role { get; set; }
+        
         public List<Cart> Carts { get; set; }
         public List<Bill> Bills { get; set; }
     }

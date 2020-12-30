@@ -23,7 +23,8 @@ namespace ShopAsp.NetCore.Controllers
        
         public IActionResult Index()
         {
-            if (HttpContext.Session.GetInt32("IsLogin") != 1) return RedirectToAction("Login", "Authentication");
+            if (HttpContext.Session.GetInt32("IsLogin") != 1 ) return RedirectToAction("Login", "Authentication");
+            if (HttpContext.Session.GetInt32("Role") != 1) return RedirectToAction("Index", "Customer");
             ViewData["FullName"]=HttpContext.Session.GetString("FullName");
             ViewData["Title"] = "Quản lý sản phẩm";
             return View();
@@ -64,7 +65,7 @@ namespace ShopAsp.NetCore.Controllers
                         string fileExtension = Path.GetExtension(Product.ImageFile.FileName);
                         string UniqueFileName = Convert.ToString(Guid.NewGuid());
                         string newFileName = String.Concat(UniqueFileName, fileExtension);
-                        var dir = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Public\\Images")).Root;
+                        var dir = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "assets\\products")).Root;
                         var path = dir + $@"\{newFileName}";
                         using (var fileStream = new FileStream(path, FileMode.Create))
                         {
@@ -113,7 +114,7 @@ namespace ShopAsp.NetCore.Controllers
             {
                 return Json(new { success = false, message = "Error while Deleting" });
             }
-            var path = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Public\\Images")).Root + $@"\{productbookFromDb.ImageUrl}";
+            var path = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "assets\\products")).Root + $@"\{productbookFromDb.ImageUrl}";
             if (System.IO.File.Exists(path))
             {
                 System.IO.File.Delete(path);
@@ -136,6 +137,17 @@ namespace ShopAsp.NetCore.Controllers
             await _db.SaveChangesAsync();
             return Json(new { success = false, Message = "Cập nhật thành công" });
         }
+
+        public async Task<IActionResult> AddAdmin(string Email)
+        {
+            var UserFormDb = await _db.Users.FirstOrDefaultAsync(u => u.Email == Email);
+            if (UserFormDb == null) return Json(new { success = false, Message = "Không tìm thấy Email" });
+            UserFormDb.Role = 1;
+            _db.Users.Update(UserFormDb);
+            await _db.SaveChangesAsync();
+            return Json(new { success = true, Message = "Thêm tài khoản thành công" });
+        }
+       
         #endregion
     }
 }

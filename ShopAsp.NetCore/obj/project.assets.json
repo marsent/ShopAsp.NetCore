@@ -8934,11 +8934,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Anh\\Desktop\\ShopAsp.NetCore\\ShopAsp.NetCore\\ShopAsp.NetCore.csproj",
+      "projectUniqueName": "E:\\HK1-N2021\\FrameWork\\Đồ án\\ShopAsp.NetCore\\ShopAsp.NetCore\\ShopAsp.NetCore.csproj",
       "projectName": "ShopAsp.NetCore",
-      "projectPath": "C:\\Users\\Anh\\Desktop\\ShopAsp.NetCore\\ShopAsp.NetCore\\ShopAsp.NetCore.csproj",
+      "projectPath": "E:\\HK1-N2021\\FrameWork\\Đồ án\\ShopAsp.NetCore\\ShopAsp.NetCore\\ShopAsp.NetCore.csproj",
       "packagesPath": "C:\\Users\\Anh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Anh\\Desktop\\ShopAsp.NetCore\\ShopAsp.NetCore\\obj\\",
+      "outputPath": "E:\\HK1-N2021\\FrameWork\\Đồ án\\ShopAsp.NetCore\\ShopAsp.NetCore\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Anh\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -8953,6 +8953,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -8964,6 +8965,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "BCrypt.Net-Next": {
             "target": "Package",
@@ -9006,6 +9008,16 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[3.1.10, 3.1.10]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[3.1.10, 3.1.10]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -9014,7 +9026,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

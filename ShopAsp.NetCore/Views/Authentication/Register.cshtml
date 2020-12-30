@@ -33,6 +33,11 @@
                                 <span asp-validation-for="Email" class="text-danger"></span>
 
                             </div>
+                            <div class="form-group">
+                                <input asp-for="Address" type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Đại chỉ">
+                                <span asp-validation-for="Address" class="text-danger"></span>
+
+                            </div>
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                     <input asp-for="Password" type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Mật khẩu">
@@ -61,21 +66,40 @@
             </div>
         </div>
     </div>
-    @*@if (ViewBag.error != null)
-        {
-            <script type="text/javascript">
-
-                window.onload = function () {
-                    swal({
-                        title: "Tạo tài khoản thất bại",
-                        text: "@Html.Raw(ViewBag.error)",
-                        icon: "warning",
-                        dangerMode: true
-                    })
-                };
-            </script>
-
-        }*@
+  <script>
+      Swal.fire({
+          title: 'Email',
+          input: 'text',
+          inputAttributes: {
+              autocapitalize: 'off'
+          },
+          showCancelButton: true,
+          confirmButtonText: 'Look up',
+          showLoaderOnConfirm: true,
+          preConfirm: (login) => {
+              return fetch(`//api.github.com/users/${login}`)
+                  .then(response => {
+                      if (!response.ok) {
+                          throw new Error(response.statusText)
+                      }
+                      return response.json()
+                  })
+                  .catch(error => {
+                      Swal.showValidationMessage(
+                          `Request failed: ${error}`
+                      )
+                  })
+          },
+          allowOutsideClick: () => !Swal.isLoading()
+      }).then((result) => {
+          if (result.isConfirmed) {
+              Swal.fire({
+                  title: `${result.value.login}'s avatar`,
+                  imageUrl: result.value.avatar_url
+              })
+          }
+      })
+  </script>
 </div>
 @section Scripts{
     <partial name="_ValidationScriptsPartial" />
