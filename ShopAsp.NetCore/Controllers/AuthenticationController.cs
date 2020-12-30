@@ -101,7 +101,7 @@ namespace ShopAsp.NetCore.Controllers
             HttpContext.Session.Clear();
             HttpContext.Response.Cookies.Delete("Username");
             HttpContext.Response.Cookies.Delete("Role");
-            return RedirectToAction("Login");
+            return RedirectToAction("Index","Customer");
         }
     }
 }

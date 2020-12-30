@@ -1820,3 +1820,5 @@ C:\wamp64\www\Framework\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\ShopAsp.NetCore.
 C:\wamp64\www\Framework\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\ShopAsp.NetCore.pdb
 C:\wamp64\www\Framework\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\ShopAsp.NetCore.genruntimeconfig.cache
 >>>>>>> def834ee25e0429203376f1fd40d66d6a24194d2
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index (3).cshtml.g.cs
+E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Razor\Views\Authentication\Index.cshtml.g.cs

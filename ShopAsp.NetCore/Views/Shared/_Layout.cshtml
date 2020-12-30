@@ -50,7 +50,7 @@
                     }
                     else
                     {
-                        <a asp-controller="Customer" asp-action="Account" class="px-3 border-right border-left text-dark"><i class="fa fa-user" aria-hidden="true"></i> @Context.Request.Cookies["Username"]</a>
+                        <a asp-controller="User" asp-action="Index" class="px-3 border-right border-left text-dark"><i class="fa fa-user" aria-hidden="true"></i> @Context.Request.Cookies["Username"]</a>
                         if (Context.Request.Cookies["Role"] == "1")
                         {
                             <a asp-controller="Admin" asp-action="Index" class="px-3 border-right text-dark">Quản lý</a>
@@ -81,7 +81,7 @@
                         <a class="nav-link" href="../Cart">Giỏ hàng</i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../tai-khoan">Tài khoản</a>
+                        <a class="nav-link" asp-controller="User" asp-action="Index">Tài khoản</a>
                     </li>
                 </ul>
                 <form class="form-inline" asp-action="Index" method="get" asp-controller="Products">
@@ -105,7 +105,7 @@
     <main>
         @RenderBody()
     </main>
-    <footer id="footer" class="bg-dark text-white py-5">
+    <footer id="footer" class="bg-dark text-white py-5 mt-5">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-12">
