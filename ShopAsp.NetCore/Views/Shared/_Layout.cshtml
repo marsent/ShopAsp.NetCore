@@ -11,7 +11,8 @@
     <!-- Owl-carousel CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha256-UhQQ4fxEeABh4JrcmAJ1+16id/1dnlOEVCFOxDef9Lw=" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha256-kksNxjDRxd/5+jGurZUJd1sdR2v+ClrCl3svESBaJqw=" crossorigin="anonymous">
-
+    <!-- SweetAlert 2 -->
+    <link  rel="stylesheet" href="~/vendor/sweetalert2/dist/sweetalert2.min.css"/>
     <!-- font awesome icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous">
 
@@ -41,6 +42,7 @@
             </p>
 
             <div class="font-rale font-size-14">
+<<<<<<< HEAD
                 @{
                     
                     if (string.IsNullOrEmpty(Context.Request.Cookies["Username"]))
@@ -58,6 +60,9 @@
                     }
                     
                 }
+=======
+                <a asp-controller="Authentication" asp-action="Login" class="px-3 border-right border-left text-dark">Đăng nhập</a><a asp-controller="Authentication" asp-action="Register" class="px-3 border-right border-left text-dark">Đăng ký</a>
+>>>>>>> e5977e0c038d83cc8fd214f7094dc0f22a4dbff6
             </div>
 
         </div>
@@ -80,7 +85,7 @@
                         <a class="nav-link" href="../Cart">Giỏ hàng</i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../tai-khoan">Tài khoản</a>
+                        <a class="nav-link" asp-controller="User" asp-action="Index">Tài khoản</a>
                     </li>
                 </ul>
                 <form class="form-inline" action="../san-pham">
@@ -154,10 +159,11 @@
 
     <!-- Owl Carousel Js file -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha256-pTxD+DSzIwmwhOqTFN+DB+nHjO4iAsbgfyFq5K5bcE0=" crossorigin="anonymous"></script>
-
+    <!--Sweet Alert 2-->
+    <script src="~/vendor/sweetalert2/dist/sweetalert2.all.min.js"></script>
     <!--  isotope plugin cdn  -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <!-- Custom Javascript -->
     <script src="index.js"></script>
     <script type="text/javascript">
