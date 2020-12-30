@@ -22,14 +22,17 @@ namespace ShopAsp.NetCore.Controllers
         public IActionResult Index()
         {
             if (HttpContext.Session.GetInt32("IsLogin") != 1) return RedirectToAction("Login");
+            if (HttpContext.Session.GetInt32("Role") == 0) return RedirectToAction("Index", "Customer");
+            if (HttpContext.Session.GetInt32("Role") == 1) return RedirectToAction("Index", "Admin");
             ViewBag.Id = HttpContext.Session.GetInt32("Id");
             ViewBag.Name = HttpContext.Session.GetString("FullName");
             ViewBag.Email = HttpContext.Session.GetString("Email");
             ViewBag.Role = HttpContext.Session.GetInt32("Role"); ;
-            return RedirectToAction("Index", "Customer");
+            return View();
         }
         public IActionResult Register()
         {
+            if (HttpContext.Session.GetInt32("Role") == 0) return RedirectToAction("Index", "Customer");
             ViewData["Title"] = "Đăng kí";
             return View();
         }
@@ -39,7 +42,11 @@ namespace ShopAsp.NetCore.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(User User)
         {
-            if (ModelState.IsValid)
+            if (HttpContext.Session.GetString("Fullname") != null)
+            {
+                return RedirectToAction("Index", "Customer");
+            }
+            else if (ModelState.IsValid)
             {
                 var check = _db.Users.FirstOrDefault(u => u.Email == User.Email);
                 if (check == null)
@@ -60,6 +67,7 @@ namespace ShopAsp.NetCore.Controllers
         }
         public IActionResult Login()
         {
+            if (HttpContext.Session.GetInt32("Role") == 0) return RedirectToAction("Index", "Customer");
             ViewData["Title"] = "Đăng nhập";
 
             return View();

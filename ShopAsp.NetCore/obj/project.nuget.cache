@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kis7bEumlGk7KEPPlrxg8oeIlkE/3zgNSaIh7S62RTWjfi8Cd7IEVpdZRf5BqNNN7lqmV6suCQPc1pMWc6VXfg==",
+  "dgSpecHash": "gVQfIKYWVBf0ALYQ7qFPRMWO0WOLsc+o3kx3L2S7xEbXtQGfABp2dFy/GDQFainHX2Z3l3jx0boupqqyZLp+Zg==",
   "success": true,
-  "projectFilePath": "E:\\HK1-N2021\\FrameWork\\Đồ án\\ShopAsp.NetCore\\ShopAsp.NetCore\\ShopAsp.NetCore.csproj",
+  "projectFilePath": "C:\\Users\\Anh\\Desktop\\ShopAsp.NetCore\\ShopAsp.NetCore\\ShopAsp.NetCore.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Anh\\.nuget\\packages\\bcrypt.net-next\\4.0.2\\bcrypt.net-next.4.0.2.nupkg.sha512",
     "C:\\Users\\Anh\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
@@ -175,9 +175,7 @@
     "C:\\Users\\Anh\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\Anh\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\Anh\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\Anh\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
-    "C:\\Users\\Anh\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
-    "C:\\Users\\Anh\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.10\\microsoft.netcore.app.host.win-x64.3.1.10.nupkg.sha512"
+    "C:\\Users\\Anh\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }

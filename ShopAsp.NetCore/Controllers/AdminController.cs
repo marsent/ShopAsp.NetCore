@@ -23,8 +23,8 @@ namespace ShopAsp.NetCore.Controllers
        
         public IActionResult Index()
         {
-            if (HttpContext.Session.GetInt32("IsLogin") != 1 ) return RedirectToAction("Login", "Authentication");
-            if (HttpContext.Session.GetInt32("Role") != 1) return RedirectToAction("Index", "Customer");
+            if (HttpContext.Session.GetInt32("IsLogin") != 1) return RedirectToAction("Login", "Authentication");
+            if (HttpContext.Session.GetInt32("Role") == 0) return RedirectToAction("Index", "Customer");
             ViewData["FullName"]=HttpContext.Session.GetString("FullName");
             ViewData["Title"] = "Quản lý sản phẩm";
             return View();
@@ -32,6 +32,7 @@ namespace ShopAsp.NetCore.Controllers
         public IActionResult Upsert(int? id)
         {
             if (HttpContext.Session.GetInt32("IsLogin") != 1) return RedirectToAction("Login", "Authentication");
+            if (HttpContext.Session.GetInt32("Role") == 0) return RedirectToAction("Index", "Customer");
             Product = new Product();
             if (id == null)
             {
@@ -54,7 +55,8 @@ namespace ShopAsp.NetCore.Controllers
 
         public async Task<IActionResult> UpsertAsync()
         {
-
+            if (HttpContext.Session.GetInt32("IsLogin") != 1) return RedirectToAction("Login", "Authentication");
+            if (HttpContext.Session.GetInt32("Role") == 0) return RedirectToAction("Index", "Customer");
             if (ModelState.IsValid)
             {
                 if (Product.ImageFile != null)
@@ -65,7 +67,7 @@ namespace ShopAsp.NetCore.Controllers
                         string fileExtension = Path.GetExtension(Product.ImageFile.FileName);
                         string UniqueFileName = Convert.ToString(Guid.NewGuid());
                         string newFileName = String.Concat(UniqueFileName, fileExtension);
-                        var dir = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "assets\\products")).Root;
+                        var dir = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Public\\Images")).Root;
                         var path = dir + $@"\{newFileName}";
                         using (var fileStream = new FileStream(path, FileMode.Create))
                         {
@@ -103,18 +105,22 @@ namespace ShopAsp.NetCore.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
+            if (HttpContext.Session.GetInt32("IsLogin") != 1) return RedirectToAction("Login", "Authentication");
+            if (HttpContext.Session.GetInt32("Role") == 0) return RedirectToAction("Index", "Customer");
             return Json(new { data = await _db.Products.ToListAsync() });
         }
 
         [HttpDelete]
         public async Task<IActionResult> Delete(int id)
         {
+            if (HttpContext.Session.GetInt32("IsLogin") != 1) return RedirectToAction("Login", "Authentication");
+            if (HttpContext.Session.GetInt32("Role") == 0) return RedirectToAction("Index", "Customer");
             var productbookFromDb = await _db.Products.FirstOrDefaultAsync(u => u.Id == id);
             if (productbookFromDb == null)
             {
                 return Json(new { success = false, message = "Error while Deleting" });
             }
-            var path = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "assets\\products")).Root + $@"\{productbookFromDb.ImageUrl}";
+            var path = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Public\\Images")).Root + $@"\{productbookFromDb.ImageUrl}";
             if (System.IO.File.Exists(path))
             {
                 System.IO.File.Delete(path);
@@ -126,6 +132,8 @@ namespace ShopAsp.NetCore.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateCheck(int id, bool data, string colName)
         {
+            if (HttpContext.Session.GetInt32("IsLogin") != 1) return RedirectToAction("Login", "Authentication");
+            if (HttpContext.Session.GetInt32("Role") == 0) return RedirectToAction("Index", "Customer");
             var ProductFromDb = await _db.Products.FirstOrDefaultAsync(u => u.Id == id);
             if (ProductFromDb == null)
             {
@@ -137,17 +145,6 @@ namespace ShopAsp.NetCore.Controllers
             await _db.SaveChangesAsync();
             return Json(new { success = false, Message = "Cập nhật thành công" });
         }
-
-        public async Task<IActionResult> AddAdmin(string Email)
-        {
-            var UserFormDb = await _db.Users.FirstOrDefaultAsync(u => u.Email == Email);
-            if (UserFormDb == null) return Json(new { success = false, Message = "Không tìm thấy Email" });
-            UserFormDb.Role = 1;
-            _db.Users.Update(UserFormDb);
-            await _db.SaveChangesAsync();
-            return Json(new { success = true, Message = "Thêm tài khoản thành công" });
-        }
-       
         #endregion
     }
 }

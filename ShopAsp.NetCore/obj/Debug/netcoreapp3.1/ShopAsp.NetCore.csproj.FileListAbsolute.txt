@@ -1269,7 +1269,6 @@ C:\Users\Anh\Desktop\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Sho
 C:\Users\Anh\Desktop\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index.cshtml.g.cs
 C:\Users\Anh\Desktop\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Upsert.cshtml.g.cs
 C:\Users\Anh\Desktop\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Razor\Views\Admin\_Layout.cshtml.g.cs
-C:\Users\Anh\Desktop\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Razor\Views\Authentication\Index.cshtml.g.cs
 C:\Users\Anh\Desktop\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Razor\Views\Authentication\Login.cshtml.g.cs
 C:\Users\Anh\Desktop\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Razor\Views\Authentication\Register.cshtml.g.cs
 C:\Users\Anh\Desktop\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Razor\Views\Authentication\_Layout.cshtml.g.cs
@@ -1359,3 +1358,5 @@ E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netco
 E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Razor\Views\Products\Index.cshtml.g.cs
 E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Razor\Views\User\Index.cshtml.g.cs
 E:\HK1-N2021\FrameWork\Đồ án\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Razor\Views\User\UpdatePassword.cshtml.g.cs
+C:\Users\Anh\Desktop\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Razor\Views\User\Index.cshtml.g.cs
+C:\Users\Anh\Desktop\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Razor\Views\User\UpdatePassword.cshtml.g.cs
