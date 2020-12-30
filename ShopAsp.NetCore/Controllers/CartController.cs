@@ -174,10 +174,9 @@ namespace ShopAsp.NetCore.Controllers
             }
             else
             {
-                id = bills.Select(i => i.BillId).Max();
+                id = bills.Select(i => i.BillId).Max() + 1;
             }
             bill.BillId = id;
-
             bill.Date = DateTime.Today;
             bill.Status = "Chưa thanh toán";
 

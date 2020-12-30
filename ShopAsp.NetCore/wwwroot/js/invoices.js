@@ -1,10 +1,10 @@
 ﻿// Call the dataTables jQuery plugin
 
 $(document).ready(function () {
-    loadDataTable();
+    loadInvoices();
 });
 
-function loadDataTable() {
+function loadInvoices() {
     dataTable = $('#Invoices_load').DataTable({
         "ajax": {
             "url": "/admin/getallinvoices",
@@ -13,7 +13,24 @@ function loadDataTable() {
         },
         "columns": [
             { "data": "billId", "width": "5%" },
-            { "data": "user", "width": "10%" },
+            {
+                "data": "userId",
+                "width": "10%",
+                "render": function (data, type, row) {
+                    var tmp = null;
+                    $.ajax({
+                        url: "usergetname",
+                        type: "get",
+                        data: {
+                            id: data
+                        },
+                        success: function (data) {
+                            tmp = data;
+                        }
+                    })
+                    return tmp;
+                }
+            },
             { "data": "phone", "width": "10%" },
 
             { "data": "address", "width": "15%" },
@@ -39,8 +56,21 @@ function loadDataTable() {
                     return "Chưa thanh toán";
                 }
             },
+
             {
-                "data": "id",
+                "data": "total",
+                "width": "10%",
+                "render": function (data, type, row) {
+                    var formatter = new Intl.NumberFormat('vi-VN', {
+                        style: 'currency',
+                        currency: 'VND',
+                    });
+
+                    return formatter.format(data);
+                }
+            },
+            {
+                "data": "billId",
                 "render": function (data) {
                     return `<div class="text-center atc">
 
@@ -50,7 +80,7 @@ function loadDataTable() {
                         </a>
                         &nbsp;
                         <a  style='cursor:pointer; width:70px;'
-                            onclick=Delete('/admin/Delete?id='+${data}) >
+                            onclick=Delete('/admin/DeleteBill?id='+${data}) >
                            <i class="fa fa-trash"></i>
                         </a>
                         </div>`;

@@ -70,6 +70,5 @@ namespace ShopAsp.NetCore.Controllers
             }
             return View();
         }
-
     }
 }

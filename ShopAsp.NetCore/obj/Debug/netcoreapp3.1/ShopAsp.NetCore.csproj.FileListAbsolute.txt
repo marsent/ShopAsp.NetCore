@@ -455,4 +455,4 @@ C:\Users\Anh\Desktop\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Sho
 C:\Users\Anh\Desktop\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\ShopAsp.NetCore.csprojAssemblyReference.cache
 C:\Users\Anh\Desktop\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Razor\Views\Cart\Checkout.cshtml.g.cs
 C:\Users\Anh\Desktop\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Razor\Views\Cart\CheckOutSuccess.cshtml.g.cs
-C:\Users\Anh\Desktop\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Ịnvoices.cshtml.g.cs
+C:\Users\Anh\Desktop\ShopAsp.NetCore\ShopAsp.NetCore\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Invoices.cshtml.g.cs
