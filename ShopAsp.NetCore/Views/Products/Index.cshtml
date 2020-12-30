@@ -30,11 +30,7 @@
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="item py-2" style="margin: auto; max-width: 250px;margin-bottom:20px;margin-top:0px; ">
                         <div class="product font-rale ">
-<<<<<<< HEAD
                             <a asp-controller="Products" asp-action="Details" asp-route-id="@item.Id"><img class="img-fluid " style="transform: scale(1);" onmouseover="this.style='transform:scale(1.15,1.15)'" onmouseout="this.style='transform:scale(1,1)'" alt="product @Html.DisplayFor(modelItem => item.Id)" src="@Html.DisplayFor(modelItem => item.ImageUrl)"></a>
-=======
-                            <a href="Products/Details/?id=@Html.DisplayFor(modelItem => item.Id)"><img class="img-fluid " style="transform: scale(1);" onmouseover="this.style='transform:scale(1.15,1.15)'" onmouseout="this.style='transform:scale(1,1)'" alt="product @Html.DisplayFor(modelItem => item.Id)" src="~/assets/products/@Html.DisplayFor(modelItem => item.ImageUrl)"></a>
->>>>>>> def834ee25e0429203376f1fd40d66d6a24194d2
                             <div class="text-center ">
                                 <h6 style="margin-top: 25px;">@Html.DisplayFor(modelItem => item.Name)</h6>
                                 <div class="rating text-warning font-size-12">

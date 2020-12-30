@@ -1,7 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
     "C:\\Users\\Anh\\Desktop\\ShopAsp.NetCore\\ShopAsp.NetCore\\ShopAsp.NetCore.csproj": {}
   },
   "projects": {
@@ -13,22 +12,9 @@
         "projectPath": "C:\\Users\\Anh\\Desktop\\ShopAsp.NetCore\\ShopAsp.NetCore\\ShopAsp.NetCore.csproj",
         "packagesPath": "C:\\Users\\Anh\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Anh\\Desktop\\ShopAsp.NetCore\\ShopAsp.NetCore\\obj\\",
-=======
-    "C:\\wamp64\\www\\Framework\\ShopAsp.NetCore\\ShopAsp.NetCore.csproj": {}
-  },
-  "projects": {
-    "C:\\wamp64\\www\\Framework\\ShopAsp.NetCore\\ShopAsp.NetCore.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\wamp64\\www\\Framework\\ShopAsp.NetCore\\ShopAsp.NetCore.csproj",
-        "projectName": "ShopAsp.NetCore",
-        "projectPath": "C:\\wamp64\\www\\Framework\\ShopAsp.NetCore\\ShopAsp.NetCore.csproj",
-        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-        "outputPath": "C:\\wamp64\\www\\Framework\\ShopAsp.NetCore\\obj\\",
->>>>>>> def834ee25e0429203376f1fd40d66d6a24194d2
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Anh\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -101,11 +87,7 @@
               "privateAssets": "all"
             }
           },
-<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
-=======
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
->>>>>>> def834ee25e0429203376f1fd40d66d6a24194d2
         }
       }
     }
