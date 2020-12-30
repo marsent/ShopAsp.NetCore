@@ -8,14 +8,14 @@
 <section id="product" class=" py-5">
     <div class="container">
         <div class="row">
-            <div class=" col-lg-6" id="SP_img"><img class="img-fluid" style="transform: scale(1);" onmouseover="this.style='transform:scale(0.95,0.95)'" onmouseout="this.style='transform:scale(1,1)'" alt="@Html.DisplayFor(model => model.Name)" src="~/@Html.DisplayFor(model => model.ImageUrl)"></div>
+            <div class=" col-lg-6" id="SP_img"><img class="img-fluid" style="transform: scale(1);" onmouseover="this.style='transform:scale(0.95,0.95)'" onmouseout="this.style='transform:scale(1,1)'" alt="@Html.DisplayFor(model => model.Name)" src="~/assets/products/@Html.DisplayFor(model => model.ImageUrl)"></div>
             <div class=" col-lg-6 py-5" id="SP_P">
                 <h1 class="font-baloo">@Html.DisplayFor(model => model.Name)</h1>
                 <small style="font-size:12px; font-style:italic"> by @Html.DisplayFor(model => model.Brand)</small>
                 <hr class="m-0">
                 <div class="row" style="margin-top:20px">
                     <div class="col-6 col-lg-5 font-rale" style="font-size:16px;"> Giá gốc: </div>
-                    <div class="col-6 col-lg-7 font-rale" style="font-size:16px;"> <strike class="price">@Html.DisplayFor(model => model.Price)</strikeclass="price"> </div>
+                    <div class="col-6 col-lg-7 font-rale" style="font-size:16px;"> <strike class="price">@Html.DisplayFor(model => model.Price)</strike> </div>
                     <div class="col-6 col-lg-5 font-rale" style="font-size:18px;margin-top:15px">Giá khuyến mãi: </div>
                     <div class="col-6 col-lg-7 font-rale"><span class="text-danger" style="font-size:26px;">@Html.DisplayFor(model => model.Price)</span> <br><small class="text-dark font-size-12">&nbsp;&nbsp;Bao gồm VAT 10%</small></div>
                 </div>
@@ -54,16 +54,16 @@
         <div class="owl-carousel owl-theme owl-loaded owl-drag">
             <div class="owl-stage-outer">
                 <div class="owl-stage" style="transform: translate3d(-552px, 0px, 0px); transition: all 0s ease 0s; width: 2141px;">
-                    
+
                 </div>
             </div>
         </div>
     </div>
 </section>
-   
-<script src="js/product-detail.js"></script>
+
+<script src="~/js/product-detail.js"></script>
 <script>
-    window.onload = function() {
+    window.onload = function () {
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         const id = urlParams.get('id');
@@ -74,108 +74,41 @@
             data: {
                 id: id
             },
-            success: function(response) {
+            success: function (response) {
                 $('#product').html(response);
             }
         });
 
     }
-    $(document).ready(function(){
+    $(document).ready(function () {
 
-$("#banner-area .owl-carousel").owlCarousel({
-    dots: true,
-    items: 1
-});
+        $("#banner-area .owl-carousel").owlCarousel({
+            dots: true,
+            items: 1
+        });
 
-$(".owl-carousel").owlCarousel({
-    loop: false,
-    dots: false,
-    responsive : {
-        0: {
-            items: 2,
-            nav: false
-        },
-        600: {
-            items: 3,
-            nav: true
-        },
-        1000 : {
-            items: 5,
-            nav: true
-        }
-    }
-});
+        $(".owl-carousel").owlCarousel({
+            loop: false,
+            dots: false,
+            responsive: {
+                0: {
+                    items: 2,
+                    nav: false
+                },
+                600: {
+                    items: 3,
+                    nav: true
+                },
+                1000: {
+                    items: 5,
+                    nav: true
+                }
+            }
+        });
 
-$(".button-group").on("click", "button", function(){
-    var filterValue = $(this).attr('data-filter');
-    $grid.isotope({ filter: filterValue});
-})
-});
+        $(".button-group").on("click", "button", function () {
+            var filterValue = $(this).attr('data-filter');
+            $grid.isotope({ filter: filterValue });
+        })
+    });
 </script>
-@*<h1>Details</h1>
-
-<div>
-    <h4>Product</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Brand)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Brand)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ImageUrl)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ImageUrl)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DateCreate)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DateCreate)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DateUpdate)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DateUpdate)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.OutstandingProducts)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.OutstandingProducts)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.HotProduct)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.HotProduct)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
-*@
