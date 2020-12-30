@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ShopAsp.NetCore.Models.Product>
+﻿@model PaginatedList<ShopAsp.NetCore.Models.Product>
 
 @{
     ViewData["Title"] = "Index";
@@ -6,27 +6,23 @@
 
 <section>
     <div class="container">
-        <div>
-            <div class="row mt-5">
-                <div class="row col-lg-3 col-md-4 col-sm-6 filter-el">
-                    <div class="">
-                        <nav class="">Tìm thấy kết quả cho <span id="key"></span></nav>
+        <div style="margin:10px 0px 10px 0px;">
+            <div class="">
+                <div class="form-group row filter-el">
+                    <div class="col-lg-5 col-md-4 col-sm-6">
+                        <label class="mr-2">Sắp xếp theo: </label>
+                        <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]"><button class="btn btn-outline-primary">Tên</button></a>
+                        <label class="mr-2">Sắp xếp theo: </label>
+                        <a asp-action="Index" asp-route-sortOrder="@ViewData["PriceSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]" ><button class="btn btn-outline-primary">Giá</button></a>
                     </div>
-                </div>
-                <div class="col-lg-5 col-md-4 col-sm-6">
-                    <form id="filter" method="get">
-                        <div class="form-group row filter-el">
-                            <label class="mr-2">Sắp xếp theo: </label>
-                            <select id="orderby" name="orderby">
-                                <option value="price">Giá thấp đến cao</option>
-                                <option value="price-desc">Giá cao xuống thấp</option>
-                                <option value="date">Mới nhất</option>
-                            </select>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>
+       
+
+
+
+
 
         <div class="row" id="ProductList" style="min-height: 850px; margin: 20px auto;">
             @foreach (var item in Model)
@@ -34,7 +30,7 @@
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="item py-2" style="margin: auto; max-width: 250px;margin-bottom:20px;margin-top:0px; ">
                         <div class="product font-rale ">
-                            <a href="Products/Details/?id=@Html.DisplayFor(modelItem => item.Id)"><img class="img-fluid " style="transform: scale(1);" onmouseover="this.style='transform:scale(1.15,1.15)'" onmouseout="this.style='transform:scale(1,1)'" alt="product @Html.DisplayFor(modelItem => item.Id)" src="@Html.DisplayFor(modelItem => item.ImageUrl)"></a>
+                            <a href="Products/Details/?id=@Html.DisplayFor(modelItem => item.Id)"><img class="img-fluid " style="transform: scale(1);" onmouseover="this.style='transform:scale(1.15,1.15)'" onmouseout="this.style='transform:scale(1,1)'" alt="product @Html.DisplayFor(modelItem => item.Id)" src="~/assets/products/@Html.DisplayFor(modelItem => item.ImageUrl)"></a>
                             <div class="text-center ">
                                 <h6 style="margin-top: 25px;">@Html.DisplayFor(modelItem => item.Name)</h6>
                                 <div class="rating text-warning font-size-12">
@@ -53,9 +49,52 @@
 
             }
         </div>
+        @{
+            var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+            var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+        }
+
+        <a asp-action="Index"
+           asp-route-sortOrder="@ViewData["CurrentSort"]"
+           asp-route-pageNumber="@(Model.PageIndex - 1)"
+           asp-route-currentFilter="@ViewData["CurrentFilter"]"
+           class="btn btn-default @prevDisabled">
+            Previous
+        </a>
+        <a asp-action="Index"
+           asp-route-sortOrder="@ViewData["CurrentSort"]"
+           asp-route-pageNumber="@(Model.PageIndex - 1)"
+           asp-route-currentFilter="@ViewData["CurrentFilter"]"
+           class="btn btn-default @prevDisabled">
+            @(Model.PageIndex -1)
+        </a>
+        <a asp-action="Index"
+           asp-route-sortOrder="@ViewData["CurrentSort"]"
+           asp-route-pageNumber="@(Model.PageIndex )"
+           asp-route-currentFilter="@ViewData["CurrentFilter"]"
+           class="btn btn-default">
+            @Model.PageIndex
+        </a>
+        <a asp-action="Index"
+           asp-route-sortOrder="@ViewData["CurrentSort"]"
+           asp-route-pageNumber="@(Model.PageIndex + 1)"
+           asp-route-currentFilter="@ViewData["CurrentFilter"]"
+           class="btn btn-default @nextDisabled">
+            @(Model.PageIndex +1)
+        </a>
+        <a asp-action="Index"
+           asp-route-sortOrder="@ViewData["CurrentSort"]"
+           asp-route-pageNumber="@(Model.PageIndex + 1)"
+           asp-route-currentFilter="@ViewData["CurrentFilter"]"
+           class="btn btn-default @nextDisabled">
+            Next
+        </a>
+
         <div class="row" id="PageList">
             <ul class="pagination justify-content-end" id="Page" style="margin: 20px auto;"></ul>
+
         </div>
+
     </div>
 </section>
 
