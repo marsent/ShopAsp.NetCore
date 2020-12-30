@@ -26,11 +26,11 @@
                             </div>
                             <div class="qty d-flex pt-2">
                                 <div class="d-flex font-rale w-25">
-                                    <button class="qty-up border bg-light" onclick="addToCart(@item.Cart.UserId, @Html.DisplayFor(modelItem => item.Product.Id), 1)" data-id="pro1"><i class="fas fa-angle-up"></i></button>
-                                    <input style="min-width: 30px" type="text" data-id="pro1" class="qty_input border px-2 w-100 bg-light" disabled value="@Html.DisplayFor(modelItem => item.Cart.Quantity)" placeholder="1">
-                                    <button data-id="pro1" onclick="addToCart(@Html.DisplayFor(modelItem => item.Cart.UserId), @Html.DisplayFor(modelItem => item.Product.Id), -1)" class="qty-down border bg-light"><i class="fas fa-angle-down"></i></button>
+                                    <button class="qty-up border bg-light" onclick="addToCart(@item.Cart.UserId, @item.Product.Id, 1)" data-id="pro1"><i class="fas fa-angle-up"></i></button>
+                                    <input style="min-width: 30px" type="text" data-id="pro1" class="qty_input border px-2 w-100 bg-light" disabled value="@item.Cart.Quantity" placeholder="1">
+                                    <button data-id="pro1" onclick="addToCart(@item.Cart.UserId, @item.Product.Id, -1)" class="qty-down border bg-light"><i class="fas fa-angle-down"></i></button>
                                 </div>
-                                <button onclick="addToCart(@Html.DisplayFor(modelItem => item.Cart.UserId), @Html.DisplayFor(modelItem => item.Product.Id), -$row[quantity])" class="btn font-baloo text-danger px-3 ml-3">Xóa</button>
+                                <button onclick="addToCart(@item.Cart.UserId, @item.Product.Id, -@item.Cart.Quantity)" class="btn font-baloo text-danger px-3 ml-3">Xóa</button>
                             </div>
                         </div>
                         <div class="col-xl-2 col-md text-right">
@@ -64,9 +64,9 @@
                         <div class="owl-item">
                             <div class="item py-2">
                                 <div class="product font-rale">
-                                    <a href="../chi-tiet-san-pham/"><img src="@Html.DisplayFor(modelItem => item.ImageUrl)" class="img-fluid"></a>
+                                    <a href="../chi-tiet-san-pham/"><img src="~/assets/products/@item.ImageUrl" class="img-fluid"></a>
                                     <div class="text-center">
-                                        <h6 style="margin-top: 15px">@Html.DisplayFor(modelItem => item.Name)</h6>
+                                        <h6 style="margin-top: 15px">@item.Name</h6>
                                         <div class="rating text-warning font-size-12">
                                             <span><i class="fas fa-star"></i></span>
                                             <span><i class="fas fa-star"></i></span>
@@ -77,7 +77,7 @@
                                         <div class="price py-2">
                                             <span> @Html.DisplayFor(modelItem => item.Price)</span>
                                         </div>
-                                        <button type="submit" name="top_sale_submit" onclick="addToCart(@ViewData["UserId"], @Html.DisplayFor(modelItem => item.Id), 1)" class="btn btn-warning font-size-12">Thêm vào giỏ</button>
+                                        <button type="submit" name="top_sale_submit" onclick="addToCart(@ViewData["UserId"], @item.Id, 1)" class="btn btn-warning font-size-12">Thêm vào giỏ</button>
                                     </div>
                                 </div>
                             </div>

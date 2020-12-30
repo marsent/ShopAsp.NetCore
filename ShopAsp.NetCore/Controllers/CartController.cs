@@ -97,8 +97,15 @@ namespace ShopAsp.NetCore.Controllers
                 }
                 else
                 {
-                    cart.Quantity += quantity;
-                    _context.Update(cart);
+                    if (-cart.Quantity == quantity)
+                    {
+                        _context.Remove(cart);
+                    }
+                    else
+                    {
+                        cart.Quantity += quantity;
+                        _context.Update(cart);
+                    }
                 }
 
                 try

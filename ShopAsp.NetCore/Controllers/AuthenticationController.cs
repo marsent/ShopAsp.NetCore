@@ -89,6 +89,48 @@ namespace ShopAsp.NetCore.Controllers
                 HttpContext.Session.SetInt32("Role", account.Role);
                 HttpContext.Response.Cookies.Append("Username", account.LastName + " " + account.FirstName);
                 HttpContext.Response.Cookies.Append("Role", account.Role.ToString());
+
+                if (HttpContext.Request.Cookies["user"] != null)
+                {
+                    List<string> carts = new List<string>();
+                    carts = HttpContext.Request.Cookies["user"].Split(',').ToList();
+                    var items = from m in _db.Carts
+                                select m;
+
+                    carts.ForEach((item) =>
+                    {
+                        List<string> itemInfo = new List<string>();
+                        itemInfo = item.Split('-').ToList();
+                        int itemId = Int32.Parse(itemInfo.First());
+                        int quantity = Int32.Parse(itemInfo.Last());
+                        var cart = items.FirstOrDefault(x => x.UserId == account.Id && x.ProductId == itemId);
+                        if (cart == null)
+                        {
+                            Cart myCart = new Cart();
+                            myCart.UserId = account.Id;
+                            myCart.ProductId = itemId;
+                            myCart.Quantity = quantity;
+                            _db.Add(myCart);
+                        }
+                        else
+                        {
+                            cart.Quantity += quantity;
+                            _db.Update(cart);
+                        }
+                    });
+
+                    try
+                    {
+                        _db.SaveChanges();
+                        HttpContext.Response.Cookies.Delete("user");
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                        _db.SaveChanges();
+                    }
+                }
+                
                 return RedirectToAction("Index");
             }
 
