@@ -19,11 +19,54 @@ namespace ShopAsp.NetCore.Controllers
         }
 
         // GET: Products
-        public async Task<IActionResult> Index()
+        /*public async Task<IActionResult> Index()
         {
             return View(await _context.Products.ToListAsync());
-        }
+        }*/
 
+        public async Task<IActionResult> Index(string sortOrder, string currentFilter,string searchString,int? pageNumber)
+        {
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["PriceSortParm"] = sortOrder == "Price" ? "price_desc" : "Price";
+
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewData["CurrentFilter"] = searchString;
+
+            var Products = from s in _context.Products
+                           select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                Products = Products.Where(s => s.Name.Contains(searchString)
+                                       || s.Brand.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    Products = Products.OrderByDescending(s => s.Name);
+                    break;
+                case "Price":
+                    Products = Products.OrderBy(s => s.Price);
+                    break;
+                case "price_desc":
+                    Products = Products.OrderByDescending(s => s.Price);
+                    break;
+                default:
+                    Products = Products.OrderBy(s => s.Name);
+                    break;
+            }
+
+            int pageSize = 10;
+            return View(await PaginatedList<Product>.CreateAsync(Products.AsNoTracking(), pageNumber ?? 1, pageSize));
+        }
         // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)
         {
