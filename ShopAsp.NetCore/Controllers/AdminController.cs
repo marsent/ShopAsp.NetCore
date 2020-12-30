@@ -23,7 +23,8 @@ namespace ShopAsp.NetCore.Controllers
        
         public IActionResult Index()
         {
-            if (HttpContext.Session.GetInt32("IsLogin") != 1 && HttpContext.Session.GetInt32("Role")!=1) return RedirectToAction("Login", "Authentication");
+            if (HttpContext.Session.GetInt32("IsLogin") != 1 ) return RedirectToAction("Login", "Authentication");
+            if (HttpContext.Session.GetInt32("Role") != 1) return RedirectToAction("Index", "Customer");
             ViewData["FullName"]=HttpContext.Session.GetString("FullName");
             ViewData["Title"] = "Quản lý sản phẩm";
             return View();
@@ -136,6 +137,17 @@ namespace ShopAsp.NetCore.Controllers
             await _db.SaveChangesAsync();
             return Json(new { success = false, Message = "Cập nhật thành công" });
         }
+
+        public async Task<IActionResult> AddAdmin(string Email)
+        {
+            var UserFormDb = await _db.Users.FirstOrDefaultAsync(u => u.Email == Email);
+            if (UserFormDb == null) return Json(new { success = false, Message = "Không tìm thấy Email" });
+            UserFormDb.Role = 1;
+            _db.Users.Update(UserFormDb);
+            await _db.SaveChangesAsync();
+            return Json(new { success = true, Message = "Thêm tài khoản thành công" });
+        }
+       
         #endregion
     }
 }

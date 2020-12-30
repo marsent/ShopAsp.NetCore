@@ -87,24 +87,42 @@ function loadDataTable() {
 }
 
 function Delete(url) {
-    swal({
+    Swal.fire({
         title: "Bạn có chắc muốn xóa",
         text: "Sau khi xóa dữ liệu sẽ không được khôi phục",
         icon: "warning",
-        buttons: true,
-        dangerMode: true
+        showCancelButton: true,
+        confirmButtonText: 'Đồng ý',
+        cancelButtonText: 'Hủy',
     }).then((willDelete) => {
         if (willDelete) {
             $.ajax({
                 type: "DELETE",
                 url: url,
                 success: function (data) {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
                     if (data.success) {
-                        toastr.success(data.message);
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'Xóa sản phẩm thành công'
+                        })
                         dataTable.ajax.reload();
                     }
                     else {
-                        toastr.error(data.message);
+                        Toast.fire({
+                            icon: 'error',
+                            title: 'Xóa sản phẩm thất bại'
+                        })
                     }
                 }
             });
