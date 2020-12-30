@@ -8,9 +8,9 @@
         <div class="owl-item">  
             <div class="item py-2">
                 <div class="product font-rale">
-                    <a asp-controller="Products" asp-action="Details" asp-route-id="@item.Id"><img src="~/assets/products/@Html.DisplayFor(modelItem => item.ImageUrl)" class="img-fluid"></a>
+                    <a asp-controller="Products" asp-action="Details" asp-route-id="@item.Id"><img src="~/assets/products/@item.ImageUrl" class="img-fluid"></a>
                     <div class="text-center">
-                        <h6 style="margin-top: 15px">@Html.DisplayFor(modelItem => item.Name)</h6>
+                        <h6 style="margin-top: 15px">@item.Name</h6>
                         <div class="rating text-warning font-size-12">
                             <span><i class="fas fa-star"></i></span>
                             <span><i class="fas fa-star"></i></span>
@@ -18,10 +18,10 @@
                             <span><i class="fas fa-star"></i></span>
                             <span><i class="far fa-star"></i></span>
                         </div>
-                        <div class="product-price py-2">
-                            @Html.DisplayFor(modelItem => item.Price)
+                        <div class="product-price price py-2">
+                            @item.Price
                         </div>
-                        <button type="submit" name="top_sale_submit" onclick="addToCart(@ViewData["UserId"], @Html.DisplayFor(modelItem => item.Id), 1)" class="btn btn-warning font-size-12">Thêm vào giỏ</button>
+                        <button type="submit" name="top_sale_submit" onclick="addToCart(@ViewData["UserId"], @item.Id, 1)" class="btn btn-warning font-size-12">Thêm vào giỏ</button>
                     </div>
                 </div>
             </div>

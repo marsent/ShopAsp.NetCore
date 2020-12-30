@@ -42,7 +42,7 @@
 
             <div class="font-rale font-size-14">
                 @{
-                    
+
                     if (string.IsNullOrEmpty(Context.Request.Cookies["Username"]))
                     {
                         <a asp-controller="Authentication" asp-action="Login" class="px-3 border-right border-left text-dark">Đăng nhập</a>
@@ -51,10 +51,13 @@
                     else
                     {
                         <a asp-controller="Customer" asp-action="Account" class="px-3 border-right border-left text-dark"><i class="fa fa-user" aria-hidden="true"></i> @Context.Request.Cookies["Username"]</a>
-                        <a asp-controller="Admin" asp-action="Index" class="px-3 border-right text-dark">Quản lý</a>
+                        if (Context.Request.Cookies["Role"] == "1")
+                        {
+                            <a asp-controller="Admin" asp-action="Index" class="px-3 border-right text-dark">Quản lý</a>
+                        }
                         <a asp-controller="Authentication" asp-action="Logout" class="px-3 border-right text-dark">Đăng xuất</a>
                     }
-                    
+
                 }
             </div>
 
@@ -185,7 +188,7 @@
                 currency: 'VND',
             });
 
-            $.each($(".product-price"), (i, val) => { val.innerHTML = formatter.format(val.innerHTML) });
+            $.each($(".price"), (i, val) => { val.innerHTML = formatter.format(val.innerHTML) });
 
             // $("#username").html(getCookie("Username"));
 

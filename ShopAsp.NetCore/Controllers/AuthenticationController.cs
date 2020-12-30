@@ -32,7 +32,7 @@ namespace ShopAsp.NetCore.Controllers
         }
         public IActionResult Register()
         {
-            if (HttpContext.Session.GetInt32("Role") == 0) return RedirectToAction("Index", "Customer");
+            if (HttpContext.Session.GetInt32("IsLogin") == 1) return RedirectToAction("Index");
             ViewData["Title"] = "Đăng kí";
             return View();
         }
@@ -42,6 +42,7 @@ namespace ShopAsp.NetCore.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(User User)
         {
+            if (HttpContext.Session.GetInt32("IsLogin") == 1) return RedirectToAction("Index");
             if (HttpContext.Session.GetString("Fullname") != null)
             {
                 return RedirectToAction("Index", "Customer");
@@ -67,7 +68,7 @@ namespace ShopAsp.NetCore.Controllers
         }
         public IActionResult Login()
         {
-            if (HttpContext.Session.GetInt32("Role") == 0) return RedirectToAction("Index", "Customer");
+            if (HttpContext.Session.GetInt32("IsLogin") == 1) return RedirectToAction("Index");
             ViewData["Title"] = "Đăng nhập";
 
             return View();
@@ -77,7 +78,7 @@ namespace ShopAsp.NetCore.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Login(string email, string password)
         {
-
+            if (HttpContext.Session.GetInt32("IsLogin") == 1) return RedirectToAction("Index");
             var account = _db.Users.FirstOrDefault(u => u.Email == email);
             if (account != null && BC.Verify(password, account.Password))
             {
@@ -87,6 +88,7 @@ namespace ShopAsp.NetCore.Controllers
                 HttpContext.Session.SetString("Email", account.Email);
                 HttpContext.Session.SetInt32("Role", account.Role);
                 HttpContext.Response.Cookies.Append("Username", account.LastName + " " + account.FirstName);
+                HttpContext.Response.Cookies.Append("Role", account.Role.ToString());
                 return RedirectToAction("Index");
             }
 
@@ -98,6 +100,7 @@ namespace ShopAsp.NetCore.Controllers
         {
             HttpContext.Session.Clear();
             HttpContext.Response.Cookies.Delete("Username");
+            HttpContext.Response.Cookies.Delete("Role");
             return RedirectToAction("Login");
         }
     }
