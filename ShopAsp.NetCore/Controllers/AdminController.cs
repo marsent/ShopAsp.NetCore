@@ -100,51 +100,19 @@ namespace ShopAsp.NetCore.Controllers
             return View(Product);
         }
 
-        #region API Calls
-
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAllInvoices()
         {
-            if (HttpContext.Session.GetInt32("IsLogin") != 1) return RedirectToAction("Login", "Authentication");
-            if (HttpContext.Session.GetInt32("Role") == 0) return RedirectToAction("Index", "Customer");
-            return Json(new { data = await _db.Products.ToListAsync() });
+            return Json(new { data = await _db.Bills.ToListAsync() });
         }
 
-        [HttpDelete]
-        public async Task<IActionResult> Delete(int id)
+        public IActionResult Invoices()
         {
             if (HttpContext.Session.GetInt32("IsLogin") != 1) return RedirectToAction("Login", "Authentication");
             if (HttpContext.Session.GetInt32("Role") == 0) return RedirectToAction("Index", "Customer");
-            var productbookFromDb = await _db.Products.FirstOrDefaultAsync(u => u.Id == id);
-            if (productbookFromDb == null)
-            {
-                return Json(new { success = false, message = "Error while Deleting" });
-            }
-            var path = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Public\\Images")).Root + $@"\{productbookFromDb.ImageUrl}";
-            if (System.IO.File.Exists(path))
-            {
-                System.IO.File.Delete(path);
-            }
-            _db.Products.Remove(productbookFromDb);
-            await _db.SaveChangesAsync();
-            return Json(new { success = true, message = "Delete successful" });
+            ViewData["FullName"] = HttpContext.Session.GetString("FullName");
+            ViewData["Title"] = "Quản lý sản phẩm";
+            return View();
         }
-        [HttpPost]
-        public async Task<IActionResult> UpdateCheck(int id, bool data, string colName)
-        {
-            if (HttpContext.Session.GetInt32("IsLogin") != 1) return RedirectToAction("Login", "Authentication");
-            if (HttpContext.Session.GetInt32("Role") == 0) return RedirectToAction("Index", "Customer");
-            var ProductFromDb = await _db.Products.FirstOrDefaultAsync(u => u.Id == id);
-            if (ProductFromDb == null)
-            {
-                return Json(new { success = false, Message = "Không tìm thấy sản phẩm" });
-            }
-            if (colName == "HotProduct") ProductFromDb.HotProduct = data;
-            if (colName == "OutstandingProducts") ProductFromDb.OutstandingProducts = data;
-            _db.Products.Update(ProductFromDb);
-            await _db.SaveChangesAsync();
-            return Json(new { success = false, Message = "Cập nhật thành công" });
-        }
-        #endregion
     }
 }

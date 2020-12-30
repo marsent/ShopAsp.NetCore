@@ -1,6 +1,6 @@
 ﻿
 
-@model ShopAsp.NetCore.Models.User
+@model ShopAsp.NetCore.Models.Bill
 
 <div class="container py-3">
     <div class="row">
@@ -8,7 +8,7 @@
             <h4 class="d-flex justify-content-between align-items-center mb-3">
                 <span class="text-muted">Giỏ hàng của bạn</span>
 
-                <span class="badge badge-secondary badge-pill">1</span>
+                <span class="badge badge-secondary badge-pill">@ViewData["Quantity"]</span>
             </h4>
             <ul class="list-group mb-3">
 
@@ -39,14 +39,14 @@
                     <div class="col-md-6 mb-3">
                         <label for="lastName">Họ *</label>
                         <input type="hidden" value="14990000" name="total">
-                        <input type="text" class="form-control" id="lastName" name="LastName" asp-for="LastName" required="">
+                        <input type="text" class="form-control" id="lastName" name="LastName" asp-for="User.LastName" required="">
                         <div class="invalid-feedback">
                             Họ là bắt buộc.
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="firstName">Tên *</label>
-                        <input type="text" class="form-control" id="firstName" name="FirstName" asp-for="FirstName" required="">
+                        <input type="text" class="form-control" id="firstName" name="FirstName" asp-for="User.FirstName" required="">
                         <div class="invalid-feedback">
                             Tên là bắt buộc.
                         </div>
@@ -55,7 +55,7 @@
                 <div class="mb-3">
                     <label for="phone">Số điện thoại *</label>
                     <div class="input-group">
-                        <input type="number" class="form-control" placeholder="0987654321" required="">
+                        <input type="number" class="form-control" placeholder="0987654321" asp-for="Phone" required="">
                         <div class="invalid-feedback" style="width: 100%;">
                             Số điện thoại là bắt buộc.
                         </div>
@@ -63,14 +63,14 @@
                 </div>
                 <div class="mb-3">
                     <label for="email">Email *</label>
-                    <input type="email" class="form-control" asp-for="Email" placeholder="nguyenvana@example.com" required="">
+                    <input type="email" class="form-control" asp-for="User.Email" placeholder="nguyenvana@example.com" required="">
                     <div class="invalid-feedback">
                         Vui lòng nhập địa chỉ Email hợp lệ.
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="address">Địa chỉ *</label>
-                    <input type="text" class="form-control" asp-for="Address" placeholder="Số 3, Khu phố 6, Phường Linh Trung" required="">
+                    <input type="text" class="form-control" asp-for="User.Address" placeholder="Số 3, Khu phố 6, Phường Linh Trung" required="">
                     <div class="invalid-feedback">
                         Vui lòng nhập địa chỉ.
                     </div>
@@ -78,7 +78,7 @@
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="city">Tỉnh / Thành phố *</label>
-                        <select class="custom-select d-block w-100" id="city" required="" name="city">
+                        <select class="custom-select d-block w-100" asp-for="Province" required="" name="city">
                             <option value="">Chọn...</option>
                             <option value="Hồ Chí Minh">Thành phố Hồ Chí Minh</option>
                             <option value="Đồng Nai">Đồng Nai</option>
@@ -92,7 +92,7 @@
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="district">Quận / Huyện *</label>
-                        <select class="custom-select d-block w-100" id="district" name="district" required="">
+                        <select class="custom-select d-block w-100" id="district" asp-for="District" required="">
                             <option value="">Chọn...</option>
                             <option value="Quận 1">Quận 1</option>
                             <option value="Quận 2">Quận 2</option>
@@ -120,7 +120,7 @@
                 </div>
 
                 <hr class="mb-4">
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Xác nhận đặt hàng</button>
+                <button asp-action="ConfirmCheckOut" class="btn btn-primary btn-lg btn-block" type="submit">Xác nhận đặt hàng</button>
             </form>
         </div>
     </div>

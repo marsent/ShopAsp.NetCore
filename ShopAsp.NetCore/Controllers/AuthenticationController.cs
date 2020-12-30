@@ -122,7 +122,7 @@ namespace ShopAsp.NetCore.Controllers
                     try
                     {
                         _db.SaveChanges();
-                        HttpContext.Response.Cookies.Delete("user");
+                        HttpContext.Response.Cookies.Delete("tyMobileUser");
                     }
                     catch (Exception e)
                     {

@@ -23,6 +23,16 @@ namespace ShopAsp.NetCore.Controllers
 
         public async Task<IActionResult> Index()
         {
+
+            if (HttpContext.Session.GetInt32("IsLogin") != 1)
+            {
+                ViewData["UserId"] = -1;
+            }
+            else
+            {
+                ViewData["UserId"] = HttpContext.Session.GetInt32("Id");
+            }
+
             var products = from p in _context.Products
                          select p;
 

@@ -37,11 +37,10 @@ namespace ShopAsp.NetCore.Controllers
 
                 ViewData["CartItems"] = cartItems;
                 ViewData["UserId"] = HttpContext.Session.GetInt32("Id");
-                ViewData["Quantity"] = cartItems.Select(i => i.Cart.Quantity).Sum();
                 long total = cartItems.Select(s => s.Cart.Quantity * s.Product.Price).Sum();
-                ViewData["Total"] = total;
-
-                ViewData["Message"] = (total > 10000000) ? "Đơn hàng của bạn được miễn phí vận chuyển" : "Phí vận chuyển đơn hàng là 50,000đ";
+                ViewData["Total"] = (total > 10000000) ? total : total + 100000;
+                ViewData["Quantity"] = cartItems.Select(i => i.Cart.Quantity).Sum();
+                ViewData["Message"] = (total > 10000000) ? "Đơn hàng trên 10 triệu được miễn phí vận chuyển" : "Phí vận chuyển đơn hàng là 100,000đ";
             }
             else
             {
@@ -74,7 +73,7 @@ namespace ShopAsp.NetCore.Controllers
 
         public void ClearCookies()
         {
-            HttpContext.Response.Cookies.Delete("user");
+            HttpContext.Response.Cookies.Delete("tyMobileUser");
         }
 
         [HttpPost]
@@ -97,7 +96,7 @@ namespace ShopAsp.NetCore.Controllers
                 }
                 else
                 {
-                    if (-cart.Quantity == quantity)
+                    if (cart.Quantity + quantity <= 0)
                     {
                         _context.Remove(cart);
                     }
@@ -130,7 +129,7 @@ namespace ShopAsp.NetCore.Controllers
                 string combindedCart = string.Join(",", cart);
                 CookieOptions cookieOptions = new CookieOptions();
                 cookieOptions.Expires = new DateTimeOffset(DateTime.Now.AddDays(7));
-                HttpContext.Response.Cookies.Append("user", combindedCart, cookieOptions);
+                HttpContext.Response.Cookies.Append("tyMobileUser", combindedCart, cookieOptions);
                 return cart.Count.ToString();
             }
             return GetTotalItem();
@@ -149,13 +148,64 @@ namespace ShopAsp.NetCore.Controllers
             ViewData["CartItems"] = cartItems;
             ViewData["UserId"] = HttpContext.Session.GetInt32("Id");
             long total = cartItems.Select(s => s.Cart.Quantity * s.Product.Price).Sum();
-            ViewData["Total"] = total;
-
-            ViewData["ShippingCost"] = (total > 10000000) ? "Đơn hàng trên 10 triệu được miễn phí vận chuyển" : "Phí vận chuyển đơn hàng là 50,000đ";
+            ViewData["Total"] = (total > 10000000) ? total : total + 100000;
+            ViewData["Quantity"] = cartItems.Select(i => i.Cart.Quantity).Sum();
+            ViewData["ShippingCost"] = (total > 10000000) ? "Đơn hàng trên 10 triệu được miễn phí vận chuyển" : "Phí vận chuyển đơn hàng là 100,000đ";
 
             var user = _context.Users.FirstOrDefault(u => u.Id == HttpContext.Session.GetInt32("Id"));
 
-            return View(user);
+            Bill bill = new Bill();
+
+            bill.User = user;
+
+            return View(bill);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ConfirmCheckOut(Bill bill)
+        {
+            
+            if (HttpContext.Session.GetInt32("IsLogin") != 1) return RedirectToAction("Login", "Authentication");
+            var bills = from b in _context.Bills select b;
+            int id;
+            if (bills == null)
+            {
+                id = 1;
+            }
+            else
+            {
+                id = bills.Select(i => i.BillId).Max();
+            }
+            bill.BillId = id;
+
+            bill.Date = DateTime.Today;
+            bill.Status = "Chưa thanh toán";
+
+            _context.Add(bill);
+
+            var cartItems = from cart in _context.Carts
+                            join product in _context.Products on cart.ProductId equals product.Id
+                            select new CartItem { Product = product, Cart = cart };
+
+            cartItems = cartItems.Where(i => i.Cart.UserId == HttpContext.Session.GetInt32("Id"));
+
+            List<CartItem> listCartItems = cartItems.ToList();
+
+            listCartItems.ForEach((i) => {
+                BillDetail bd = new BillDetail();
+                bd.BillId = id;
+                bd.ProductId = i.Product.Id;
+                bd.quantity = i.Cart.Quantity;
+                bd.TotalPrice = i.Product.Price * i.Cart.Quantity;
+            });
+
+            return RedirectToAction("CheckOutSuccess");
+        }
+
+        public async Task<IActionResult> CheckOutSuccess()
+        {
+            if (HttpContext.Session.GetInt32("IsLogin") != 1) return RedirectToAction("Login", "Authentication");
+            return View();
         }
     }
 }

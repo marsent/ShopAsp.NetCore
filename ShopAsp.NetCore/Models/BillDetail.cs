@@ -16,7 +16,6 @@ namespace ShopAsp.NetCore.Models
         public Product Products { get; set; }
         public int quantity { get; set; }
         public int TotalPrice { get; set; }
-
     }
 }
 

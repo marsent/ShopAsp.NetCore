@@ -35,6 +35,7 @@ namespace ShopAsp.NetCore.Controllers
             UserFromDb.FirstName = user.FirstName;
             UserFromDb.LastName = user.LastName;
             UserFromDb.Address = user.Address;
+            HttpContext.Session.SetString("FullName", user.LastName + user.FirstName);
             UserFromDb.ConfirmPassword = UserFromDb.Password;
             _db.Users.Update(UserFromDb);
             await _db.SaveChangesAsync();

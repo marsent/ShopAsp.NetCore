@@ -5,48 +5,38 @@ $(document).ready(function () {
 });
 
 function loadDataTable() {
-    dataTable = $('#DT_load').DataTable({
+    dataTable = $('#Invoices_load').DataTable({
         "ajax": {
-            "url": "/admin/getall",
+            "url": "/admin/getallinvoices",
             "type": "GET",
             "datatype": "json"
         },
         "columns": [
-            { "data": "name", "width": "10%" },
-            { "data": "brand", "width": "5%" },
-            { "data": "price", "width": "10%" },
+            { "data": "billId", "width": "5%" },
+            { "data": "user", "width": "10%" },
+            { "data": "phone", "width": "10%" },
+
+            { "data": "address", "width": "15%" },
+            { "data": "date", "width": "10%" },
+
             {
-                "data": "imageUrl", "width": "30%",
+                "data": "status",
+                "width": "10%",
                 "render": function (data, type, row) {
-                    return ` <img class="zoom" src="\\assets\\products\\${data}" width='100%'/>`;
-                }
-            },
-            { "data": "dateCreate", "width": "10%" },
-            { "data": "dateUpdate", "width": "10%" },
-            {
-                "data": "description",
-                "width": "30%",
-                "render": function (data, type, row) {
-                    if (data != null) {
-                        return type === 'display' && data.length > 30 ?
-                            data.substr(0, 30) + '…' :
-                            data;
+                    if (data == "chua van chuyen") {
+                        return "Chưa vận chuyển"
                     }
-                    return data;
+                    return "Đã vận chuyển";
                 }
             },
             {
-                "data": "outstandingProducts",
-                "width": "5%",
-                "render": function (data) {
-                    if (data == true) return `<input onchange=UpdateCheck(this,"OutstandingProducts") type="checkbox" value=${data} checked/>`
-                    else return `<input onchange=UpdateCheck(this,"OutstandingProducts") type="checkbox" value=${data}/>`
-                }
-            },
-            {
-                "data": "hotProduct", "width": "5%", "render": function (data) {
-                    if (data == true) return `<input onchange=UpdateCheck(this,"HotProduct") type="checkbox" value=${data} checked/>`
-                    else return `<input onchange=UpdateCheck(this,"HotProduct") type="checkbox" value=${data} />`
+                "data": "pay",
+                "width": "10%",
+                "render": function (data, type, row) {
+                    if (data == 1) {
+                        return "Đã thanh toán"
+                    }
+                    return "Chưa thanh toán";
                 }
             },
             {
@@ -70,7 +60,7 @@ function loadDataTable() {
         "language": {
             "emptyTable": "Không có dữ liệu",
             "search": "Tìm kiếm:",
-            "info": "Hiển thị từ _START_ đến _END_ trển _TOTAL_ sản phẩm",
+            "info": "Hiển thị từ _START_ đến _END_ trển _TOTAL_ Hóa đơn",
             "infoEmpty": "",
             "loadingRecords": "Đang tải dữ liệu...",
             "paginate": {
@@ -79,7 +69,7 @@ function loadDataTable() {
                 "next": ">",
                 "previous": "<"
             },
-            "lengthMenu": "Hiện _MENU_ sản phẩm",
+            "lengthMenu": "Hiện _MENU_ Hóa đơn",
         },
         "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
         "width": "100%"
