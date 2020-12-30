@@ -1,0 +1,27 @@
+@{ Layout = "_Layout"; }
+<div class="row justify-content-md-start">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                Wellcome
+            </div>
+            <div class="card-body">
+                <p>Id: @ViewBag.Id</p>
+                <p>Name: @ViewBag.Name</p>
+                <p>Email:  @ViewBag.Email</p>
+                @if (ViewBag.Role == 1)
+                {
+                    <p>Role: Admin</p>
+                }
+                else
+                {
+                    <p>Role: Customer</p>
+                }
+                <a asp-action="Logout" class="btn btn-warning">Logout</a>
+                <a asp-controller="Admin" asp-action="Index" class="btn btn-success">Trang quản lý</a>
+
+            </div>
+        </div>
+
+    </div>
+</div>
