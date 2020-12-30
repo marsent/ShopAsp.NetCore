@@ -16,6 +16,7 @@ namespace ShopAsp.NetCore.Controllers
         private readonly AppDbContext _db;
         [BindProperty]
         public Product Product { get; set; }
+        [BindProperty]
         public Bill Bill { get; set; }
         public AdminController(AppDbContext db)
         {
@@ -63,7 +64,6 @@ namespace ShopAsp.NetCore.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-
         public async Task<IActionResult> UpsertAsync()
         {
             if (HttpContext.Session.GetInt32("IsLogin") != 1) return RedirectToAction("Login", "Authentication");
@@ -122,23 +122,29 @@ namespace ShopAsp.NetCore.Controllers
             {
                 return NotFound();
             }
+            Bill.Date = DateTime.Now;
+
+            
+            List<BillDetail> lbd = _db.BillDetails.Where(bd => bd.BillId == id).ToList();
+
+            lbd.ForEach(i => {
+                i.Product = _db.Products.FirstOrDefault(p => p.Id == i.ProductId);
+            });
+
+            Bill.BillDetails = lbd;
+
             return View(Bill);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-
-        public IActionResult UpsertBillAsync()
+        public async Task<IActionResult> UpsertBillAsync()
         {
             if (HttpContext.Session.GetInt32("IsLogin") != 1) return RedirectToAction("Login", "Authentication");
             if (HttpContext.Session.GetInt32("Role") == 0) return RedirectToAction("Index", "Customer");
-            if (ModelState.IsValid)
-            {
-                Bill.Date = DateTime.Now;
-                _db.Bills.Update(Bill);
-                _db.SaveChanges();
-                return RedirectToAction("Invoices");
-            }
+            _db.Bills.Update(Bill);
+            _db.SaveChanges();
+            return RedirectToAction("Invoices", "Admin");
             return View(Bill);
         }
 

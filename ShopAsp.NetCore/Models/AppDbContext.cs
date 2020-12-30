@@ -48,7 +48,7 @@ namespace ShopAsp.NetCore.Models
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<BillDetail>()
-                .HasOne(p => p.Products)
+                .HasOne(p => p.Product)
                 .WithMany(bd => bd.BillDetails)
                 .HasForeignKey(bd => bd.ProductId)
                 .OnDelete(DeleteBehavior.Restrict);

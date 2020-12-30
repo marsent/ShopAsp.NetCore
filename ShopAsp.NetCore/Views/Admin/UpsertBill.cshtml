@@ -1,4 +1,5 @@
-﻿@model ShopAsp.NetCore.Models.Bill
+﻿@model ShopAsp.NetCore.Models.Bill;
+
 @{
     Layout = "_Layout";
 }
@@ -6,14 +7,36 @@
 
 <h2 class="text-info container">Chỉnh sửa hóa đơn</h2>
 <div class="border container" style="padding:30px;">
-
     <form method="post" enctype="multipart/form-data" asp-controller="Admin">
-        @if (Model.BillId != 0)
-        {
-            <input type="hidden" asp-for="BillId" />
-            <input type="hidden" asp-for="UserId" />
-        }
+        <div class="table-responsive">
+            <table id="dataTable1" class="table table-bordered" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <td>Tên sản phẩm</td>
+                        <td>Đơn giá</td>
+                        <td>Số lượng</td>
+                        <td>Thành tiền</td>
+                    </tr>
+                </thead>
+                <tbody id="detail_modal">
+                    @foreach (var item in Model.BillDetails as IEnumerable<BillDetail>)
+                    {
+                        <tr id="11">
+                            <td>@item.Product.Name</td>
+                            <td class="price">@item.Product.Price</td>
+                            <td>@item.quantity</td>
+                            <td class="price">@item.TotalPrice</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
         <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <input type="hidden" asp-for="BillId" />
+        <input type="hidden" asp-for="UserId" />
+        <input type="hidden" asp-for="Date" />
+        <input type="hidden" asp-for="District" />
+        <input type="hidden" asp-for="Province" />
         <div class="form-group row">
             <div class="col-3">
                 <label>Mã hóa đơn</label>
@@ -74,7 +97,7 @@
                 <label>Tổng tiền</label>
             </div>
             <div class="col-6">
-                <input asp-for="Total" class="form-control" />
+                <input class="price" asp-for="Total" class="form-control" />
                 <span asp-validation-for="Total" class="text-danger"></span>
             </div>
         </div>

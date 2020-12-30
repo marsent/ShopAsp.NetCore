@@ -16,8 +16,8 @@ function loadInvoices() {
             { "data": "receiver", "width": "10%" },
             { "data": "phone", "width": "10%" },
 
-            { "data": "address", "width": "15%" },
-            { "data": "date", "width": "10%" },
+            { "data": "address", "width": "25%" },
+            { "data": "date", "width": "15%" },
 
             {
                 "data": "status",

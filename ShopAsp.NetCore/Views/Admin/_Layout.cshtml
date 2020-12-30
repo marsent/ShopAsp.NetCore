@@ -21,7 +21,19 @@
     <!-- Custom styles for this page -->
     <link href="~/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
-
+    <style>
+        #fullName::before {
+            content: "";
+            position: relative;
+            left: -10px;
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: blue;
+            border-radius: 50%;
+        }
+    
+    </style>
 </head>
 <body>
     <header>
@@ -42,19 +54,19 @@
                             </div>
                         </li>
                         <li class="nav-item ">
+                            <a class="nav-link text-dark" role="button" asp-controller="Admin" asp-action="Invoices">Quản lý hóa đơn</a>
+                        </li>
+                        <li class="nav-item ">
                             <a class="nav-link text-dark" role="button" id="addAdmin">Thêm tài khoản admin</a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link text-dark" role="button" id="addAdmin" asp-controller="Admin" asp-action="Invoices">Quản lý hóa đơn</a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link text-dark" role="button" id="addAdmin" asp-controller="Customer" asp-action="Index">Trở về trang chủ</a>
+                            <a class="nav-link text-dark" role="button" asp-controller="Customer" asp-action="Index">Trở về trang chủ</a>
                         </li>
                     </ul>
                 </div>
                 <div class="nav-item dropdown no-arrow float-right">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">@ViewData["FullName"]</span>
+                        <span id="fullName" class="mr-2 d-none d-lg-inline text-gray-600">@ViewData["FullName"]</span>
                     </a>
                     <!-- Dropdown - User Information -->
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

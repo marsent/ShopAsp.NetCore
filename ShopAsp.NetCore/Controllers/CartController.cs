@@ -39,7 +39,7 @@ namespace ShopAsp.NetCore.Controllers
                 ViewData["UserId"] = HttpContext.Session.GetInt32("Id");
                 long total = cartItems.Select(s => s.Cart.Quantity * s.Product.Price).Sum();
                 ViewData["Total"] = (total > 10000000) ? total : total + 100000;
-                ViewData["Quantity"] = cartItems.Select(i => i.Cart.Quantity).Sum();
+                ViewBag.Quantity = cartItems.Select(i => i.Cart.Quantity).Sum();
                 ViewData["Message"] = (total > 10000000) ? "Đơn hàng trên 10 triệu được miễn phí vận chuyển" : "Phí vận chuyển đơn hàng là 100,000đ";
             }
             else
@@ -149,7 +149,7 @@ namespace ShopAsp.NetCore.Controllers
             ViewData["UserId"] = HttpContext.Session.GetInt32("Id");
             int total = cartItems.Select(s => s.Cart.Quantity * s.Product.Price).Sum();
             ViewData["Total"] = (total > 10000000) ? total : total + 100000;
-            ViewData["Quantity"] = cartItems.Select(i => i.Cart.Quantity).Sum();
+            ViewBag.Quantity = cartItems.Select(i => i.Cart.Quantity).Sum();
             ViewData["ShippingCost"] = (total > 10000000) ? "Đơn hàng trên 10 triệu được miễn phí vận chuyển" : "Phí vận chuyển đơn hàng là 100,000đ";
 
             var user = _context.Users.FirstOrDefault(u => u.Id == HttpContext.Session.GetInt32("Id"));

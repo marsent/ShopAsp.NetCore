@@ -27,10 +27,12 @@ namespace ShopAsp.NetCore.Controllers
             if (HttpContext.Session.GetInt32("IsLogin") != 1)
             {
                 ViewData["UserId"] = -1;
+                ViewData["CookiesQuantity"] = HttpContext.Request.Cookies["tyMobileQuantity"];
             }
             else
             {
                 ViewData["UserId"] = HttpContext.Session.GetInt32("Id");
+                ViewData["SessionQuantity"] = HttpContext.Session.GetString("tyMobileQuantity");
             }
 
             var products = from p in _context.Products

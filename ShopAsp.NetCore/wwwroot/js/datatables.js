@@ -12,13 +12,23 @@ function loadDataTable() {
             "datatype": "json"
         },
         "columns": [
-            { "data": "name", "width": "10%" },
+            { "data": "name", "width": "15%" },
             { "data": "brand", "width": "5%" },
-            { "data": "price", "width": "10%" },
             {
-                "data": "imageUrl", "width": "30%",
+                "data": "price", "width": "10%",
                 "render": function (data, type, row) {
-                    return ` <img class="zoom" src="\\assets\\products\\${data}" width='100%'/>`;
+                    var formatter = new Intl.NumberFormat('vi-VN', {
+                        style: 'currency',
+                        currency: 'VND',
+                    });
+
+                    return formatter.format(data);
+                }
+            },
+            {
+                "data": "imageUrl", "width": "15%",
+                "render": function (data, type, row) {
+                    return ` <img src="\\assets\\products\\${data}" width='100%'/>`;
                 }
             },
             { "data": "dateCreate", "width": "10%" },
@@ -29,7 +39,7 @@ function loadDataTable() {
                 "render": function (data, type, row) {
                     if (data != null) {
                         return type === 'display' && data.length > 30 ?
-                            data.substr(0, 30) + '…' :
+                            data.substr(0, 150) + '…' :
                             data;
                     }
                     return data;

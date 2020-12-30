@@ -76,7 +76,7 @@ namespace ShopAsp.NetCore.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public IActionResult Login(string email, string password)
+        public async Task<IActionResult> Login(string email, string password)
         {
             if (HttpContext.Session.GetInt32("IsLogin") == 1) return RedirectToAction("Index");
             var account = _db.Users.FirstOrDefault(u => u.Email == email);
@@ -121,13 +121,14 @@ namespace ShopAsp.NetCore.Controllers
 
                     try
                     {
-                        _db.SaveChanges();
+                        await _db.SaveChangesAsync();
                         HttpContext.Response.Cookies.Delete("tyMobileUser");
+                        HttpContext.Response.Cookies.Delete("tyMobileQuantity");
                     }
                     catch (Exception e)
                     {
                         Console.WriteLine(e);
-                        _db.SaveChanges();
+                        await _db.SaveChangesAsync();
                     }
                 }
                 

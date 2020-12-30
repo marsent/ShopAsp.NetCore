@@ -13,7 +13,7 @@ namespace ShopAsp.NetCore.Models
         public int BillId { get; set; }
         public Bill Bills { get; set; }
         public int ProductId { get; set; }
-        public Product Products { get; set; }
+        public Product Product { get; set; }
         public int quantity { get; set; }
         public int TotalPrice { get; set; }
     }

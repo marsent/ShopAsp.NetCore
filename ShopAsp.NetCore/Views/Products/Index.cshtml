@@ -40,8 +40,8 @@
                                     <span><i class="fas fa-star"></i></span>
                                     <span><i class="far fa-star"></i></span>
                                 </div>
-                                <div><span style="font-size:20px;color:red;">@Html.DisplayFor(modelItem => item.Price)</span></div>
-                                <button type="submit" name="top_sale_submit" onclick="addToCart(@ViewData["UserId"], @Html.DisplayFor(modelItem => item.Price), 1)" class="btn btn-warning font-size-12">Thêm vào giỏ</button>
+                                <div><span class="price" style="font-size:20px;color:red;">@Html.DisplayFor(modelItem => item.Price)</span></div>
+                                <button type="submit" name="top_sale_submit" onclick="addToCart(@ViewData["UserId"], @Html.DisplayFor(modelItem => item.Id), 1)" class="btn btn-warning font-size-12">Thêm vào giỏ</button>
                             </div>
                         </div>
                     </div>
