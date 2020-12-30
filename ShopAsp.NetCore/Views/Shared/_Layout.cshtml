@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http;
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -42,18 +44,26 @@
 
             <div class="font-rale font-size-14">
                 @{
+                    var value = new Byte[20];
+                    bool nameOK = Context.Session.TryGetValue("FullName", out value);
 
-                    if (string.IsNullOrEmpty(Context.Request.Cookies["Username"]))
+                    if (!nameOK)
                     {
                         <a asp-controller="Authentication" asp-action="Login" class="px-3 border-right border-left text-dark">Đăng nhập</a>
                         <a asp-controller="Authentication" asp-action="Register" class="px-3 border-right text-dark">Đăng ký</a>
                     }
                     else
                     {
-                        <a asp-controller="User" asp-action="Index" class="px-3 border-right border-left text-dark"><i class="fa fa-user" aria-hidden="true"></i> @Context.Request.Cookies["Username"]</a>
-                        if (Context.Request.Cookies["Role"] == "1")
+                        <a asp-controller="User" asp-action="Index" class="px-3 border-right border-left text-dark"><i class="fa fa-user" aria-hidden="true"></i> @Context.Session.GetString("FullName")</a>
+
+                        bool roleOK = Context.Session.TryGetValue("Role", out value);
+
+                        if (roleOK)
                         {
-                            <a asp-controller="Admin" asp-action="Index" class="px-3 border-right text-dark">Quản lý</a>
+                            if (Context.Session.GetInt32("Role") == 1)
+                            {
+                                <a asp-controller="Admin" asp-action="Index" class="px-3 border-right text-dark">Quản lý</a>
+                            }
                         }
                         <a asp-controller="Authentication" asp-action="Logout" class="px-3 border-right text-dark">Đăng xuất</a>
                     }
@@ -72,10 +82,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="nav navbar-nav m-auto font-rubik" style="margin-left: 5">
                     <li class="nav-item">
-                        <a class="nav-link"  asp-controller="Customer" asp-action="Index">Trang chủ</a>
+                        <a class="nav-link" asp-controller="Customer" asp-action="Index">Trang chủ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link"  asp-controller="Products" asp-action="Index">Tất cả sản phẩm</a>
+                        <a class="nav-link" asp-controller="Products" asp-action="Index">Tất cả sản phẩm</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" asp-controller="Cart" asp-action="Index">Giỏ hàng</a>

@@ -90,10 +90,10 @@ namespace ShopAsp.NetCore.Controllers
                 HttpContext.Response.Cookies.Append("Username", account.LastName + " " + account.FirstName);
                 HttpContext.Response.Cookies.Append("Role", account.Role.ToString());
 
-                if (HttpContext.Request.Cookies["user"] != null)
+                if (HttpContext.Request.Cookies["tyMobileUser"] != null)
                 {
                     List<string> carts = new List<string>();
-                    carts = HttpContext.Request.Cookies["user"].Split(',').ToList();
+                    carts = HttpContext.Request.Cookies["tyMobileUser"].Split(',').ToList();
                     var items = from m in _db.Carts
                                 select m;
 

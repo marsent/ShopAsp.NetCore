@@ -46,7 +46,7 @@
                     <h6 class="border-bottom font-size-12 font-rale text-success py-3"><i class="fas fa-check"></i>@ViewData["Message"]</h6>
                     <div class="py-4">
                         <h5 class="font-baloo font-size-20">Tổng đơn hàng (@ViewData["Quantity"] sản phẩm):&nbsp; <span class="text-danger"><span class="text-danger price" id="deal-price">@ViewData["Total"]</span> </span> </h5>
-                        <a href="../thanh-toan" role="button" type="submit" class="btn btn-success text-white mt-3">Tiến hành đặt hàng</a>
+                        <a asp-controller="Cart" asp-action="CheckOut" role="button" type="submit" class="btn btn-success text-white mt-3">Tiến hành đặt hàng</a>
                     </div>
                 </div>
             </div>

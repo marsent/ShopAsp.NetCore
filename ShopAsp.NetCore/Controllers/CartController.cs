@@ -41,7 +41,7 @@ namespace ShopAsp.NetCore.Controllers
                 long total = cartItems.Select(s => s.Cart.Quantity * s.Product.Price).Sum();
                 ViewData["Total"] = total;
 
-                ViewData["Message"] = (total > 5000000) ? "Đơn hàng của bạn được miễn phí vận chuyển" : "Phí vận chuyển đơn hàng là 50,000đ";
+                ViewData["Message"] = (total > 10000000) ? "Đơn hàng của bạn được miễn phí vận chuyển" : "Phí vận chuyển đơn hàng là 50,000đ";
             }
             else
             {
@@ -64,9 +64,9 @@ namespace ShopAsp.NetCore.Controllers
             else
             {
                 List<string> cart = new List<string>();
-                if (HttpContext.Request.Cookies["user"] != null)
+                if (HttpContext.Request.Cookies["tyMobileUser"] != null)
                 {
-                    cart = HttpContext.Request.Cookies["user"].Split(',').ToList();
+                    cart = HttpContext.Request.Cookies["tyMobileUser"].Split(',').ToList();
                 }
                 return cart.Count.ToString();
             }
@@ -121,9 +121,9 @@ namespace ShopAsp.NetCore.Controllers
             else
             {
                 List<string> cart = new List<string>();
-                if (HttpContext.Request.Cookies["user"] != null)
+                if (HttpContext.Request.Cookies["tyMobileUser"] != null)
                 {
-                    cart = HttpContext.Request.Cookies["user"].Split(',').ToList();
+                    cart = HttpContext.Request.Cookies["tyMobileUser"].Split(',').ToList();
                 }
                 string item = itemId.ToString() + "-" + quantity.ToString();
                 cart.Add(item);
@@ -134,6 +134,28 @@ namespace ShopAsp.NetCore.Controllers
                 return cart.Count.ToString();
             }
             return GetTotalItem();
+        }
+
+        public async Task<IActionResult> CheckOut()
+        {
+            if (HttpContext.Session.GetInt32("IsLogin") != 1) return RedirectToAction("Login", "Authentication");
+
+            var cartItems = from cart in _context.Carts
+                            join product in _context.Products on cart.ProductId equals product.Id
+                            select new CartItem { Product = product, Cart = cart };
+
+            cartItems = cartItems.Where(i => i.Cart.UserId == HttpContext.Session.GetInt32("Id"));
+
+            ViewData["CartItems"] = cartItems;
+            ViewData["UserId"] = HttpContext.Session.GetInt32("Id");
+            long total = cartItems.Select(s => s.Cart.Quantity * s.Product.Price).Sum();
+            ViewData["Total"] = total;
+
+            ViewData["ShippingCost"] = (total > 10000000) ? "Đơn hàng trên 10 triệu được miễn phí vận chuyển" : "Phí vận chuyển đơn hàng là 50,000đ";
+
+            var user = _context.Users.FirstOrDefault(u => u.Id == HttpContext.Session.GetInt32("Id"));
+
+            return View(user);
         }
     }
 }
