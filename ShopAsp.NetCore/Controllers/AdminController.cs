@@ -16,6 +16,7 @@ namespace ShopAsp.NetCore.Controllers
         private readonly AppDbContext _db;
         [BindProperty]
         public Product Product { get; set; }
+        public Bill Bill { get; set; }
         public AdminController(AppDbContext db)
         {
             _db = db;
@@ -35,7 +36,7 @@ namespace ShopAsp.NetCore.Controllers
             if (HttpContext.Session.GetInt32("IsLogin") != 1) return RedirectToAction("Login", "Authentication");
             if (HttpContext.Session.GetInt32("Role") == 0) return RedirectToAction("Index", "Customer");
             ViewData["FullName"] = HttpContext.Session.GetString("FullName");
-            ViewData["Title"] = "Quản lý sản phẩm";
+            ViewData["Title"] = "Quản lý hóa đơn";
             return View();
         }
 
@@ -114,71 +115,31 @@ namespace ShopAsp.NetCore.Controllers
         {
             if (HttpContext.Session.GetInt32("IsLogin") != 1) return RedirectToAction("Login", "Authentication");
             if (HttpContext.Session.GetInt32("Role") == 0) return RedirectToAction("Index", "Customer");
-            Product = new Product();
-            if (id == null)
-            {
-                //create
-                ViewData["Title"] = "Thêm sản phẩm";
-                return View(Product);
-            }
-            //update
-            ViewData["Title"] = "Cập nhật sản phẩm";
-            Product = _db.Products.FirstOrDefault(u => u.Id == id);
-            if (Product == null)
+            Bill = new Bill();
+            ViewData["Title"] = "Chỉnh sửa hóa đơn";
+            Bill = _db.Bills.FirstOrDefault(u => u.BillId == id);
+            if (Bill == null)
             {
                 return NotFound();
             }
-            return View(Product);
+            return View(Bill);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public async Task<IActionResult> UpsertBillAsync()
+        public IActionResult UpsertBillAsync()
         {
             if (HttpContext.Session.GetInt32("IsLogin") != 1) return RedirectToAction("Login", "Authentication");
             if (HttpContext.Session.GetInt32("Role") == 0) return RedirectToAction("Index", "Customer");
             if (ModelState.IsValid)
             {
-                if (Product.ImageFile != null)
-                {
-                    if (Product.ImageFile.Length > 0)
-                    {
-
-                        string fileExtension = Path.GetExtension(Product.ImageFile.FileName);
-                        string UniqueFileName = Convert.ToString(Guid.NewGuid());
-                        string newFileName = String.Concat(UniqueFileName, fileExtension);
-                        var dir = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Public\\Images")).Root;
-                        var path = dir + $@"\{newFileName}";
-                        using (var fileStream = new FileStream(path, FileMode.Create))
-                        {
-                            await Product.ImageFile.CopyToAsync(fileStream);
-                        }
-                        if (Product.ImageUrl != newFileName && Product.ImageUrl != null)
-                        {
-                            if (System.IO.File.Exists(dir + $@"\{Product.ImageUrl}"))
-                            {
-                                System.IO.File.Delete(dir + $@"\{Product.ImageUrl}");
-                            }
-                        }
-                        Product.ImageUrl = newFileName;
-                    }
-                }
-                if (Product.Id == 0)
-                {
-                    //create
-                    Product.DateCreate = Product.DateUpdate = DateTime.Now;
-                    _db.Products.Add(Product);
-                }
-                else
-                {
-                    Product.DateUpdate = DateTime.Now;
-                    _db.Products.Update(Product);
-                }
+                Bill.Date = DateTime.Now;
+                _db.Bills.Update(Bill);
                 _db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Invoices");
             }
-            return View(Product);
+            return View(Bill);
         }
 
         #region API Calls
@@ -186,12 +147,14 @@ namespace ShopAsp.NetCore.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
+            if (HttpContext.Session.GetInt32("IsLogin") != 1) return RedirectToAction("Login", "Authentication");
             return Json(new { data = await _db.Products.ToListAsync() });
         }
 
         [HttpDelete]
         public async Task<IActionResult> Delete(int id)
         {
+            if (HttpContext.Session.GetInt32("IsLogin") != 1) return RedirectToAction("Login", "Authentication");
             var productbookFromDb = await _db.Products.FirstOrDefaultAsync(u => u.Id == id);
             if (productbookFromDb == null)
             {
@@ -209,6 +172,7 @@ namespace ShopAsp.NetCore.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateCheck(int id, bool data, string colName)
         {
+            if (HttpContext.Session.GetInt32("IsLogin") != 1) return RedirectToAction("Login", "Authentication");
             var ProductFromDb = await _db.Products.FirstOrDefaultAsync(u => u.Id == id);
             if (ProductFromDb == null)
             {
@@ -223,20 +187,39 @@ namespace ShopAsp.NetCore.Controllers
 
         public async Task<IActionResult> GetAllInvoices()
         {
+            if (HttpContext.Session.GetInt32("IsLogin") != 1) return RedirectToAction("Login", "Authentication");
             return Json(new { data = await _db.Bills.ToListAsync() });
         }
 
-
-        public string UserGetName(int userId)
+        public async Task<IActionResult> UserGetName(int userId)
         {
-            var users = from u in _db.Users select u;
-            User user = users.FirstOrDefault(u => u.Id == userId);
-            if (user != null)
+            if (HttpContext.Session.GetInt32("IsLogin") != 1) return RedirectToAction("Login", "Authentication");
+            var user = await _db.Users.FirstOrDefaultAsync(u => u.Id == userId);
+            if (user == null)
             {
-                string name = user.LastName + user.FirstName;
-                return name;
+                return Json(new { success = false, message = "Error" });
             }
-            return "";
+            string name = user.LastName + " " + user.FirstName;
+            return Json(new { success = true, message = name });
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> DeleteBill(int id)
+        {
+            if (HttpContext.Session.GetInt32("IsLogin") != 1) return RedirectToAction("Login", "Authentication");
+            var bill = await _db.Bills.FirstOrDefaultAsync(u => u.BillId == id);
+            if (bill == null)
+            {
+                return Json(new { success = false, message = "Error while Deleting" });
+            }
+            var dt = _db.BillDetails.Where(u => u.BillId == id).ToList();
+            dt.ForEach((i) =>
+            {
+                _db.BillDetails.Remove(i);
+            });
+            _db.Bills.Remove(bill);
+            await _db.SaveChangesAsync();
+            return Json(new { success = true, message = "Delete successful" });
         }
 
         #endregion

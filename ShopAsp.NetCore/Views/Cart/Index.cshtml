@@ -64,7 +64,7 @@
                         <div class="owl-item">
                             <div class="item py-2">
                                 <div class="product font-rale">
-                                    <a href="../chi-tiet-san-pham/"><img src="~/assets/products/@item.ImageUrl" class="img-fluid"></a>
+                                    <a asp-controller="Products" asp-action="Details" asp-route-id="@item.Id"><img src="~/assets/products/@item.ImageUrl" class="img-fluid"></a>
                                     <div class="text-center">
                                         <h6 style="margin-top: 15px">@item.Name</h6>
                                         <div class="rating text-warning font-size-12">

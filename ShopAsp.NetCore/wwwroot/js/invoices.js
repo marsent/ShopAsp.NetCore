@@ -13,24 +13,7 @@ function loadInvoices() {
         },
         "columns": [
             { "data": "billId", "width": "5%" },
-            {
-                "data": "userId",
-                "width": "10%",
-                "render": function (data, type, row) {
-                    var tmp = null;
-                    $.ajax({
-                        url: "usergetname",
-                        type: "get",
-                        data: {
-                            id: data
-                        },
-                        success: function (data) {
-                            tmp = data;
-                        }
-                    })
-                    return tmp;
-                }
-            },
+            { "data": "receiver", "width": "10%" },
             { "data": "phone", "width": "10%" },
 
             { "data": "address", "width": "15%" },
@@ -75,12 +58,12 @@ function loadInvoices() {
                     return `<div class="text-center atc">
 
                          <input type="hidden" value="${data}"/>
-                        <a href="/admin/Upsert?id=${data}"  style='cursor:pointer; width:70px;'>
+                        <a href="/admin/UpsertBill?id=${data}"  style='cursor:pointer; width:70px;'>
                            <i class="fa fa-edit"></i>
                         </a>
                         &nbsp;
                         <a  style='cursor:pointer; width:70px;'
-                            onclick=Delete('/admin/DeleteBill?id='+${data}) >
+                            onclick=Delete('/Admin/DeleteBill?id='+${data}) >
                            <i class="fa fa-trash"></i>
                         </a>
                         </div>`;
@@ -195,3 +178,20 @@ function UpdateCheck(data, colName) {
     }
 }
 
+
+$(document).ready(() => {
+    var formatter = new Intl.NumberFormat('vi-VN', {
+        style: 'currency',
+        currency: 'VND',
+    });
+    $("#Total").html(formatter.format($("#Total").text()))
+})
+
+$("#Total").change(() => {
+    var formatter = new Intl.NumberFormat('vi-VN', {
+        style: 'currency',
+        currency: 'VND',
+    });
+    var total = $(this).text()
+    $(this).html(formatter.format(total));
+})

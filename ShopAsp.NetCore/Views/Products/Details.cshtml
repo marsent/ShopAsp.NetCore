@@ -36,8 +36,8 @@
                     </div>
                 </div>
                 <hr>
-                <div class="col-12" style="margin:15px auto;"><button onclick="addToCart($userId, @Html.DisplayFor(model => model.Id), 1)" class="btn btn-warning font-size-16 form-control">Thêm vào giỏ hàng</button></div>
-                <div class="col-12" style="margin:15px auto;"><a onclick="addToCart($userId, @Html.DisplayFor(model => model.Id), 1)" name="product_submit" class="btn btn-danger form-control" href="../gio-hang">Mua ngay</a> </div>
+                <div class="col-12" style="margin:15px auto;"><button onclick="addToCart(@ViewData["UserId"], @Html.DisplayFor(model => model.Id), 1)" class="btn btn-warning font-size-16 form-control">Thêm vào giỏ hàng</button></div>
+                <div class="col-12" style="margin:15px auto;"><a onclick="addToCart(@ViewData["UserId"], @Html.DisplayFor(model => model.Id), 1)" name="product_submit" class="btn btn-danger form-control" asp-controller="Cart" asp-action="Index">Mua ngay</a> </div>
             </div>
             <div class="col-12" id="SP_D" style="margin:2.5rem 0rem">
                 <h6 class="font-baloo" style="text-shadow: black; font-size: 24px; font-style: initial ;">Mô tả</h6>

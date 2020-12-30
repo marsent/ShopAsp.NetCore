@@ -147,7 +147,7 @@ namespace ShopAsp.NetCore.Controllers
 
             ViewData["CartItems"] = cartItems;
             ViewData["UserId"] = HttpContext.Session.GetInt32("Id");
-            long total = cartItems.Select(s => s.Cart.Quantity * s.Product.Price).Sum();
+            int total = cartItems.Select(s => s.Cart.Quantity * s.Product.Price).Sum();
             ViewData["Total"] = (total > 10000000) ? total : total + 100000;
             ViewData["Quantity"] = cartItems.Select(i => i.Cart.Quantity).Sum();
             ViewData["ShippingCost"] = (total > 10000000) ? "Đơn hàng trên 10 triệu được miễn phí vận chuyển" : "Phí vận chuyển đơn hàng là 100,000đ";
@@ -157,31 +157,37 @@ namespace ShopAsp.NetCore.Controllers
             Bill bill = new Bill();
 
             bill.User = user;
+            bill.Receiver = user.LastName + " " + user.FirstName;
+            bill.UserId = user.Id;
+            bill.Total = (total > 10000000) ? total : total + 100000;
+
 
             return View(bill);
         }
 
         [HttpPost]
-        public async Task<IActionResult> ConfirmCheckOut(Bill bill)
+        public async Task<IActionResult> ConfirmCheckOut(Bill b)
         {
-            
+
             if (HttpContext.Session.GetInt32("IsLogin") != 1) return RedirectToAction("Login", "Authentication");
-            var bills = from b in _context.Bills select b;
-            int id;
-            if (bills == null)
-            {
-                id = 1;
-            }
-            else
-            {
-                id = bills.Select(i => i.BillId).Max() + 1;
-            }
-            bill.BillId = id;
-            bill.Date = DateTime.Today;
-            bill.Status = "Chưa thanh toán";
+            Bill bill = new Bill();
+            DateTime dt = DateTime.Now;
+            bill.Date = dt;
+            bill.UserId = b.UserId;
+            bill.Status = "Chưa vận chuyển";
+            bill.Total = b.Total;
+            bill.Pay = "Chưa thanh toán";
+            bill.Address = $"{b.Address}, {b.District}, {b.Province}";
+            bill.District = b.District;
+            bill.Province = b.Province;
+            bill.Phone = b.Phone;
+            bill.Receiver = b.Receiver;
 
-            _context.Add(bill);
+            _context.Bills.Add(bill);
 
+            await _context.SaveChangesAsync();
+            var bills = from bi in _context.Bills select bi;
+            Bill currentBill = bills.FirstOrDefault(i => i.Date == dt);
             var cartItems = from cart in _context.Carts
                             join product in _context.Products on cart.ProductId equals product.Id
                             select new CartItem { Product = product, Cart = cart };
@@ -192,18 +198,26 @@ namespace ShopAsp.NetCore.Controllers
 
             listCartItems.ForEach((i) => {
                 BillDetail bd = new BillDetail();
-                bd.BillId = id;
+                bd.BillId = currentBill.BillId;
                 bd.ProductId = i.Product.Id;
                 bd.quantity = i.Cart.Quantity;
                 bd.TotalPrice = i.Product.Price * i.Cart.Quantity;
+                _context.BillDetails.Add(bd);
+                _context.SaveChanges();
             });
 
             return RedirectToAction("CheckOutSuccess");
         }
 
-        public async Task<IActionResult> CheckOutSuccess()
+        public ActionResult CheckOutSuccess()
         {
             if (HttpContext.Session.GetInt32("IsLogin") != 1) return RedirectToAction("Login", "Authentication");
+            var ci = _context.Carts.Where(u => u.UserId == HttpContext.Session.GetInt32("Id")).ToList();
+            ci.ForEach(i =>
+            {
+                _context.Remove(i);
+            });
+            _context.SaveChanges();
             return View();
         }
     }

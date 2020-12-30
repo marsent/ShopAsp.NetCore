@@ -55,7 +55,7 @@ function loadDataTable() {
                     return `<div class="text-center atc">
 
                          <input type="hidden" value="${data}"/>
-                        <a href="/admin/Upsert?id=${data}"  style='cursor:pointer; width:70px;'>
+                        <a href="/Admin/Upsert?id=${data}"  style='cursor:pointer; width:70px;'>
                            <i class="fa fa-edit"></i>
                         </a>
                         &nbsp;
