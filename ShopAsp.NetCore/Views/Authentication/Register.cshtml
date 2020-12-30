@@ -66,21 +66,7 @@
             </div>
         </div>
     </div>
-    @*@if (ViewBag.error != null)
-        {
-            <script type="text/javascript">
-
-                window.onload = function () {
-                    swal({
-                        title: "Tạo tài khoản thất bại",
-                        text: "@Html.Raw(ViewBag.error)",
-                        icon: "warning",
-                        dangerMode: true
-                    })
-                };
-            </script>
-
-        }*@
+  
 </div>
 @section Scripts{
     <partial name="_ValidationScriptsPartial" />

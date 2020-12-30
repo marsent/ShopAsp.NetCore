@@ -38,10 +38,37 @@ namespace ShopAsp.NetCore.Controllers
             UserFromDb.ConfirmPassword = UserFromDb.Password;
             _db.Users.Update(UserFromDb);
             await _db.SaveChangesAsync();
+            ViewBag.Success = true;
+
 
             return RedirectToAction("Index");
         }
-       
-      
+        public IActionResult UpdatePassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> UpdatePassword(UpdatePassword data)
+        {
+            if (ModelState.IsValid)
+            {
+                var UserFromDb = _db.Users.FirstOrDefault(u => u.Id == HttpContext.Session.GetInt32("Id"));
+
+                if (BC.Verify(data.OldPassword, UserFromDb.Password))
+                {
+                    UserFromDb.Password = BC.HashPassword(data.NewPassword);
+                    _db.Users.Update(UserFromDb);
+                    await _db.SaveChangesAsync();
+                    ViewBag.Success = true;
+                }
+                else
+                {
+                    ModelState.AddModelError("OldPassword", "Sai mật khẩu");
+                    return View();
+                }
+            }
+            return View();
+        }
+
     }
 }
