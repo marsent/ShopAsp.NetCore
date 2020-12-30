@@ -78,8 +78,8 @@ namespace ShopAsp.NetCore.Controllers
                 HttpContext.Session.SetString("FullName", (string)(account.LastName + " " + account.FirstName));
                 HttpContext.Session.SetString("Email", account.Email);
                 HttpContext.Session.SetInt32("Role", account.Role);
+                HttpContext.Response.Cookies.Append("Username", account.LastName + " " + account.FirstName);
                 return RedirectToAction("Index");
-
             }
 
             //ViewBag.error = "Sai tài khoản hoặc mật khẩu";
@@ -89,6 +89,7 @@ namespace ShopAsp.NetCore.Controllers
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();
+            HttpContext.Response.Cookies.Delete("Username");
             return RedirectToAction("Login");
         }
     }

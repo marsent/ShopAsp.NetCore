@@ -59,6 +59,10 @@ namespace ShopAsp.NetCore
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Customer}/{action=Index}");
+
+                endpoints.MapControllerRoute(
+                    name: "detail",
+                    pattern: "{controller=Products}/{action=Details}/{id?}");
             });
         }
     }

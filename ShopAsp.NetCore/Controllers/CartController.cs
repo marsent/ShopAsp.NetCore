@@ -33,7 +33,20 @@ namespace ShopAsp.NetCore.Controllers
                                 join product in _context.Products on cart.ProductId equals product.Id
                                 select new CartItem { Product = product, Cart = cart };
 
-                ViewData["CartItems"] = cartItems.Where(s => s.Cart.UserId == HttpContext.Session.GetInt32("Id"));
+                cartItems = cartItems.Where(i=> i.Cart.UserId == HttpContext.Session.GetInt32("Id"));
+
+                ViewData["CartItems"] = cartItems;
+                ViewData["UserId"] = HttpContext.Session.GetInt32("Id");
+                ViewData["Quantity"] = cartItems.Select(i => i.Cart.Quantity).Sum();
+                long total = cartItems.Select(s => s.Cart.Quantity * s.Product.Price).Sum();
+                ViewData["Total"] = total;
+
+                ViewData["Message"] = (total > 5000000) ? "Đơn hàng của bạn được miễn phí vận chuyển" : "Phí vận chuyển đơn hàng là 50,000đ";
+            }
+            else
+            {
+                TempData["LoginRequired"] = "Bạn cần phải đăng nhập để xem giỏ hàng";
+                return RedirectToAction("Login", "Authentication");
             }
 
             return View();
