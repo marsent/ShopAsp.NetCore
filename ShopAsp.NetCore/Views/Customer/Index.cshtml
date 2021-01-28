@@ -1,0 +1,123 @@
+﻿@{
+    ViewData["Title"] = "Trang chủ";
+}
+
+@functions{
+    public async Task RenderProduct(Product item)
+    {
+        <div class="owl-item">  
+            <div class="item py-2">
+                <div class="product font-rale">
+                    <a asp-controller="Products" asp-action="Details" asp-route-id="@item.Id"><img src="~/assets/products/@item.ImageUrl" class="img-fluid"></a>
+                    <div class="text-center">
+                        <h6 style="margin-top: 15px">@item.Name</h6>
+                        <div class="rating text-warning font-size-12">
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="far fa-star"></i></span>
+                        </div>
+                        <div class="product-price price py-2">
+                            @item.Price
+                        </div>
+                        <button type="submit" name="top_sale_submit" onclick="addToCart(@ViewData["UserId"], @item.Id, 1)" class="btn btn-warning font-size-12">Thêm vào giỏ</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+<section id="banner-area">
+    <div class="owl-carousel owl-theme owl-loaded owl-drag">
+
+        <div class="owl-stage-outer">
+            <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 1126px;">
+                <div class="owl-item active" style="width: 375.2px;">
+                    <div class="item">
+                        <img src="~/assets/others/Banner1.png" alt="Banner1">
+                    </div>
+                </div><div class="owl-item" style="width: 375.2px;">
+                    <div class="item">
+                        <img src="~/assets/others/Banner2.png" alt="Banner2">
+                    </div>
+                </div><div class="owl-item" style="width: 375.2px;">
+                    <div class="item">
+                        <img src="~/assets/others/Banner1.png" alt="Banner3">
+                    </div>
+                </div>
+            </div>
+        </div><div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div>
+    </div>
+</section>
+<section id="top-sale">
+    <div class="container py-5">
+        <h4 class="font-rubik font-size-20">Khuyến Mãi Hot</h4>
+        <hr>
+        <div class="owl-carousel owl-theme owl-loaded owl-drag">
+            <div class="owl-stage-outer">
+                <div class="owl-stage" style="transform: translate3d(-552px, 0px, 0px); transition: all 0s ease 0s; width: 2141px;">
+
+                    <---></--->
+                    @foreach (var item in ViewData["HotProduct"] as IEnumerable<ShopAsp.NetCore.Models.Product>)
+                    {
+                        RenderProduct(item);
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="new-phone">
+    <div class="container py-5">
+        <h4 class="font-rubik font-size-20">Sản Phẩm Nổi Bật Nhất</h4>
+        <hr>
+        <!-- owl carousel -->
+        <div class="owl-carousel owl-theme owl-loaded owl-drag">
+            <div class="owl-stage-outer">
+                <div class="owl-stage" style="transform: translate3d(-552px, 0px, 0px); transition: all 0s ease 0s; width: 2141px;">
+                    @foreach (var item in ViewData["OutstandingProducts"] as IEnumerable<ShopAsp.NetCore.Models.Product>)
+                    {
+                        RenderProduct(item);
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="new-phone">
+    <div class="container py-5">
+        <h4 class="font-rubik font-size-20">Samsung</h4>
+        <hr>
+        <!-- owl carousel -->
+        <div class="owl-carousel owl-theme owl-loaded owl-drag">
+            <div class="owl-stage-outer">
+                <div class="owl-stage" style="transform: translate3d(-552px, 0px, 0px); transition: all 0s ease 0s; width: 2141px;">
+                    @foreach (var item in ViewData["Samsung"] as IEnumerable<ShopAsp.NetCore.Models.Product>)
+                    {
+                        RenderProduct(item);
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="new-phone">
+    <div class="container py-5">
+        <h4 class="font-rubik font-size-20">Apple</h4>
+        <hr>
+        <!-- owl carousel -->
+        <div class="owl-carousel owl-theme owl-loaded owl-drag">
+            <div class="owl-stage-outer">
+                <div class="owl-stage" style="transform: translate3d(-552px, 0px, 0px); transition: all 0s ease 0s; width: 2141px;">
+                    @foreach (var item in ViewData["Apple"] as IEnumerable<ShopAsp.NetCore.Models.Product>)
+                    {
+                        RenderProduct(item);
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br>

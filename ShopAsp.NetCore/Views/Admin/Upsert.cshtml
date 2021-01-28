@@ -1,0 +1,86 @@
+﻿@model ShopAsp.NetCore.Models.Product
+@{
+    Layout = "_Layout";
+}
+
+
+<h2 class="text-info container">@(Model.Id!=0 ? "Chỉnh sửa" : "Tạo") Sản phẩm</h2>
+
+<div class="border container" style="padding:30px;">
+
+    <form method="post" enctype="multipart/form-data" asp-controller="Admin">
+        @if (Model.Id != 0)
+        {
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="DateCreate" />
+            <input type="hidden" asp-for="ImageUrl" />
+        }
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Name"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Brand"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Brand" class="form-control" />
+                <span asp-validation-for="Brand" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Price"></label>
+            </div>
+            <div class="col-6">
+                <input class="price" asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Description"></label>
+            </div>
+            <div class="col-6">
+                <textarea asp-for="Description" class="form-control" rows="5"></textarea>
+            </div>
+
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="ImageFile"></label>
+            </div>
+            <div class="col-6">
+                @if (Model.Id != 0)
+                {
+                    <input asp-for="ImageFile" type="file" accept="image/*" />
+                }
+                else
+                {
+                    <input asp-for="ImageFile" type="file" accept="image/*" required />
+                }
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-3 offset-3">
+                <button type="submit" class="btn btn-primary form-control">
+                    @(Model.Id != 0 ? "Update" : "Create")
+                </button>
+            </div>
+            <div class="col-3">
+                <a asp-action="Index" class="btn btn-success form-control">Back to List</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

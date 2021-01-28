@@ -1,0 +1,115 @@
+﻿@{
+    ViewData["Title"] = "Giỏ hàng";
+}
+
+<section id="cart" class="py-3">
+    <div class="container-fluid w-75">
+        <h5 class="font-baloo font-size-20">Giỏ Hàng</h5>
+        @{
+            if (ViewBag.Quantity != 0)
+            {
+                <div class="row">
+                    <div class="col-xl-9 ">
+                        @foreach (var item in ViewData["CartItems"] as IEnumerable<ShopAsp.NetCore.Models.CartItem>)
+                        {
+                            <div class="row border-top py-3 mt-3">
+                                <div class="col-xl-2 col-md-3">
+                                    <a asp-controller="Products" asp-action="Details" asp-route-id="@item.Product.Id"><img src="~/assets/products/@item.Product.ImageUrl" style="height: 120px;" alt="cart1" class="img-fluid"></a>
+                                </div>
+                                <div class="col-xl-8 col-md-9">
+                                    <h5 class="font-baloo font-size-20">@item.Product.Name</h5>
+                                    <div class="d-flex">
+                                        <div class="rating text-warning font-size-12">
+                                            <span><i class="fas fa-star"></i></span>
+                                            <span><i class="fas fa-star"></i></span>
+                                            <span><i class="fas fa-star"></i></span>
+                                            <span><i class="fas fa-star"></i></span>
+                                            <span><i class="far fa-star"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="qty d-flex pt-2">
+                                        <div class="d-flex font-rale w-25">
+                                            <button class="qty-up border bg-light" onclick="addToCartReload(@item.Cart.UserId, @item.Product.Id, 1)" data-id="pro1"><i class="fas fa-angle-up"></i></button>
+                                            <input style="min-width: 30px" type="text" data-id="pro1" class="qty_input border px-2 w-100 bg-light" disabled value="@item.Cart.Quantity" placeholder="1">
+                                            <button data-id="pro1" onclick="addToCartReload(@item.Cart.UserId, @item.Product.Id, -1)" class="qty-down border bg-light"><i class="fas fa-angle-down"></i></button>
+                                        </div>
+                                        <button onclick="addToCartReload(@item.Cart.UserId, @item.Product.Id, -@item.Cart.Quantity)" class="btn font-baloo text-danger px-3 ml-3">Xóa</button>
+                                    </div>
+                                </div>
+                                <div class="col-xl-2 col-md text-right">
+                                    <div class="font-size-20 text-danger font-baloo">
+                                        <span class="product_price price">@Html.DisplayFor(modelItem => item.Product.Price)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="col-xl-3">
+                        <div class="sub-total border text-center mt-2">
+                            <h6 class="border-bottom font-size-12 font-rale text-success py-3"><i class="fas fa-check"></i>@ViewData["Message"]</h6>
+                            <div class="py-4">
+                                <h5 class="font-baloo font-size-20">Tổng đơn hàng (@ViewBag.Quantity sản phẩm):&nbsp; <span class="text-danger"><span class="text-danger price" id="deal-price">@ViewData["Total"]</span> </span> </h5>
+                                <a asp-controller="Cart" asp-action="CheckOut" role="button" type="submit" class="btn btn-success text-white mt-3">Tiến hành đặt hàng</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="row">
+                    <div class="col-xl-9 ">
+                        <div class="col-sm-12 text-center py-2">
+                            <img class="img-fluid" style="height: 200px;" alt="Empty Cart" src="~/assets/others/empty_cart.png">
+                            <p class="font-baloo font-size-16 text-black-50">Bạn chưa có sản phẩm</p>
+                        </div>
+                    </div>
+                    <div class="col-xl-3">
+                        <div class="sub-total border text-center mt-2">
+                            <div class="py-4">
+                                <h5 class="font-baloo font-size-20">Tổng đơn hàng (0 sản phẩm):&nbsp; <span class="text-danger"><span class="text-danger" id="deal-price">0 đ</span> </span> </h5>
+                                <a asp-controller="Customer" asp-action="Index" role="button" type="submit" class="btn btn-warning mt-3">Tiếp tục mua hàng</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</section>
+<section id="new-phone">
+    <div class="container py-5">
+        <h4 class="font-rubik font-size-20">Sản Phẩm Mới</h4>
+        <hr>
+        <div class="owl-carousel owl-theme owl-loaded owl-drag">
+            <div class="owl-stage-outer">
+                <div class="owl-stage" style="transform: translate3d(-552px, 0px, 0px); transition: all 0s ease 0s; width: 2141px;">
+                    @foreach (var item in ViewData["HotProducts"] as IEnumerable<ShopAsp.NetCore.Models.Product>)
+                    {
+                        <div class="owl-item">
+                            <div class="item py-2">
+                                <div class="product font-rale">
+                                    <a asp-controller="Products" asp-action="Details" asp-route-id="@item.Id"><img src="~/assets/products/@item.ImageUrl" class="img-fluid"></a>
+                                    <div class="text-center">
+                                        <h6 style="margin-top: 15px">@item.Name</h6>
+                                        <div class="rating text-warning font-size-12">
+                                            <span><i class="fas fa-star"></i></span>
+                                            <span><i class="fas fa-star"></i></span>
+                                            <span><i class="fas fa-star"></i></span>
+                                            <span><i class="fas fa-star"></i></span>
+                                            <span><i class="far fa-star"></i></span>
+                                        </div>
+                                        <div class="price py-2">
+                                            @Html.DisplayFor(modelItem => item.Price)
+                                        </div>
+                                        <button type="submit" name="top_sale_submit" onclick="addToCartReload(@ViewData["UserId"], @item.Id, 1)" class="btn btn-warning font-size-12">Thêm vào giỏ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
