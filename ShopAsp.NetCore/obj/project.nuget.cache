@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "gVQfIKYWVBf0ALYQ7qFPRMWO0WOLsc+o3kx3L2S7xEbXtQGfABp2dFy/GDQFainHX2Z3l3jx0boupqqyZLp+Zg==",
+  "dgSpecHash": "gIyZ2m8H8AZ9BaAvmFHnyfA1APV2HSvn73w/ODIKWl+2nr/EAw0YNktJ0+BG/KEhgJ+KkM45FDw3aTIq5ErkOQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Anh\\Desktop\\ShopAsp.NetCore\\ShopAsp.NetCore\\ShopAsp.NetCore.csproj",
+  "projectFilePath": "D:\\Project\\tymobile\\tymobile\\ShopAsp.NetCore\\ShopAsp.NetCore.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Anh\\.nuget\\packages\\bcrypt.net-next\\4.0.2\\bcrypt.net-next.4.0.2.nupkg.sha512",
     "C:\\Users\\Anh\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

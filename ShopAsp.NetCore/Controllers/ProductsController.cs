@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ShopAsp.NetCore.Models;
@@ -29,6 +30,14 @@ namespace ShopAsp.NetCore.Controllers
             ViewData["CurrentSort"] = sortOrder;
             ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewData["PriceSortParm"] = sortOrder == "Price" ? "price_desc" : "Price";
+            if (HttpContext.Session.GetInt32("IsLogin") != 1)
+            {
+                ViewData["UserId"] = -1;
+            }
+            else
+            {
+                ViewData["UserId"] = HttpContext.Session.GetInt32("Id");
+            }
 
             if (searchString != null)
             {
@@ -64,12 +73,20 @@ namespace ShopAsp.NetCore.Controllers
                     break;
             }
 
-            int pageSize = 10;
+            int pageSize = 8;
             return View(await PaginatedList<Product>.CreateAsync(Products.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
         // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            if (HttpContext.Session.GetInt32("IsLogin") != 1)
+            {
+                ViewData["UserId"] = -1;
+            }
+            else
+            {
+                ViewData["UserId"] = HttpContext.Session.GetInt32("Id");
+            }
             if (id == null)
             {
                 return NotFound();

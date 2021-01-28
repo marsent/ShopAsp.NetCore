@@ -36,7 +36,7 @@ namespace ShopAsp.NetCore.Models
                .HasForeignKey(c => c.ProductId)
                .OnDelete(DeleteBehavior.Cascade);
             modelBuilder.Entity<Bill>()
-                .HasOne(u => u.Users)
+                .HasOne(u => u.User)
                 .WithMany(b => b.Bills)
                 .HasForeignKey(b => b.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
@@ -48,7 +48,7 @@ namespace ShopAsp.NetCore.Models
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<BillDetail>()
-                .HasOne(p => p.Products)
+                .HasOne(p => p.Product)
                 .WithMany(bd => bd.BillDetails)
                 .HasForeignKey(bd => bd.ProductId)
                 .OnDelete(DeleteBehavior.Restrict);

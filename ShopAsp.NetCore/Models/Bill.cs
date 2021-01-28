@@ -11,7 +11,7 @@ namespace ShopAsp.NetCore.Models
         [Key]
         public int BillId { get; set; }
         public int UserId { get; set; }
-        public User Users { get; set; }
+        public User User { get; set; }
         public DateTime Date { get; set; }
         public string Status { get; set; }
         public string Pay { get; set; }
@@ -22,6 +22,5 @@ namespace ShopAsp.NetCore.Models
         public string Address { get; set; }
         public string Receiver { get; set; }
         public List<BillDetail> BillDetails { get; set; }
-
     }
 }

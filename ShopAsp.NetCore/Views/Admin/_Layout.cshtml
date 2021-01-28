@@ -21,9 +21,21 @@
     <!-- Custom styles for this page -->
     <link href="~/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
-
+    <style>
+        #fullName::before {
+            content: "";
+            position: relative;
+            left: -10px;
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: blue;
+            border-radius: 50%;
+        }
+    
+    </style>
 </head>
-<body>
+<body style="min-width: min-content;">
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
@@ -42,16 +54,19 @@
                             </div>
                         </li>
                         <li class="nav-item ">
+                            <a class="nav-link text-dark" role="button" asp-controller="Admin" asp-action="Invoices">Quản lý hóa đơn</a>
+                        </li>
+                        <li class="nav-item ">
                             <a class="nav-link text-dark" role="button" id="addAdmin">Thêm tài khoản admin</a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link text-dark" role="button" id="addAdmin" asp-controller="Customer" asp-action="Index">Trở về trang chủ</a>
+                            <a class="nav-link text-dark" role="button" asp-controller="Customer" asp-action="Index">Trở về trang chủ</a>
                         </li>
                     </ul>
                 </div>
                 <div class="nav-item dropdown no-arrow float-right">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">@ViewData["FullName"]</span>
+                        <span id="fullName" class="mr-2 d-none d-lg-inline text-gray-600">@ViewData["FullName"]</span>
                     </a>
                     <!-- Dropdown - User Information -->
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -97,7 +112,21 @@
     <script src="~/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
+
+
     <script src="~/js/datatables.js"></script>
-    <script src="./js/site.js"></script>
+    <script src="~/js/invoices.js"></script>
+    <script src="~/js/site.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            var formatter = new Intl.NumberFormat('vi-VN', {
+                style: 'currency',
+                currency: 'VND',
+            });
+
+            $.each($(".price"), (i, val) => { val.innerHTML = formatter.format(val.innerHTML) });
+        });
+    </script>
 </body>
 </html>

@@ -23,25 +23,16 @@ namespace ShopAsp.NetCore.Controllers
 
         public async Task<IActionResult> Index()
         {
-            // Use LINQ to get list of genres.
 
-            
-            if (HttpContext.Session.GetString("FullName") != null)
+            if (HttpContext.Session.GetInt32("IsLogin") != 1)
             {
-                ViewData["UserId"] = HttpContext.Session.GetInt32("Id");
-
-                ViewData["FullName"] = HttpContext.Session.GetString("FullName");
+                ViewData["UserId"] = -1;
+                ViewData["CookiesQuantity"] = HttpContext.Request.Cookies["tyMobileQuantity"];
             }
             else
             {
-                ViewData["UserId"] = -1;
-
-                var items = from m in _context.Carts
-                             select m;
-
-                var cart =  items.Where(x => x.UserId == HttpContext.Session.GetInt32("Id"));
-
-                ViewData["Cart"] = cart.Select(x => x.Quantity).Sum();
+                ViewData["UserId"] = HttpContext.Session.GetInt32("Id");
+                ViewData["SessionQuantity"] = HttpContext.Session.GetString("tyMobileQuantity");
             }
 
             var products = from p in _context.Products
@@ -57,7 +48,6 @@ namespace ShopAsp.NetCore.Controllers
 
             return View();
         }
-
     }
     
     

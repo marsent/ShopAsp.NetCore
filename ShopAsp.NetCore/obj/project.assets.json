@@ -8934,11 +8934,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Anh\\Desktop\\ShopAsp.NetCore\\ShopAsp.NetCore\\ShopAsp.NetCore.csproj",
+      "projectUniqueName": "D:\\Project\\tymobile\\tymobile\\ShopAsp.NetCore\\ShopAsp.NetCore.csproj",
       "projectName": "ShopAsp.NetCore",
-      "projectPath": "C:\\Users\\Anh\\Desktop\\ShopAsp.NetCore\\ShopAsp.NetCore\\ShopAsp.NetCore.csproj",
+      "projectPath": "D:\\Project\\tymobile\\tymobile\\ShopAsp.NetCore\\ShopAsp.NetCore.csproj",
       "packagesPath": "C:\\Users\\Anh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Anh\\Desktop\\ShopAsp.NetCore\\ShopAsp.NetCore\\obj\\",
+      "outputPath": "D:\\Project\\tymobile\\tymobile\\ShopAsp.NetCore\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Anh\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -8953,6 +8953,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -8964,6 +8965,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "BCrypt.Net-Next": {
             "target": "Package",
@@ -9014,7 +9016,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }

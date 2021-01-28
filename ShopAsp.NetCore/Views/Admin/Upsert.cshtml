@@ -39,7 +39,7 @@
                 <label asp-for="Price"></label>
             </div>
             <div class="col-6">
-                <input asp-for="Price" class="form-control" />
+                <input class="price" asp-for="Price" class="form-control" />
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
         </div>
@@ -63,7 +63,7 @@
                 }
                 else
                 {
-                    <input asp-for="ImageFile" type="file" accept="image/*" required/>
+                    <input asp-for="ImageFile" type="file" accept="image/*" required />
                 }
             </div>
         </div>
