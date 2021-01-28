@@ -1,5 +1,4 @@
 # ShopAsp.NetCore
-Đồ án môn học phát triển hệ thống thông tin trên Framework
 ## Chức năng chính
 * Thêm vào giỏ hàng
 * Xem giỏ hàng
