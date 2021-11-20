@@ -78,8 +78,8 @@ namespace ShopAsp.NetCore.Controllers
                         string fileExtension = Path.GetExtension(Product.ImageFile.FileName);
                         string UniqueFileName = Convert.ToString(Guid.NewGuid());
                         string newFileName = String.Concat(UniqueFileName, fileExtension);
-                        var dir = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Public\\Images")).Root;
-                        var path = dir + $@"\{newFileName}";
+                        var dir = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "assets/products")).Root;
+                        var path = dir + $@"{newFileName}";
                         using (var fileStream = new FileStream(path, FileMode.Create))
                         {
                             await Product.ImageFile.CopyToAsync(fileStream);

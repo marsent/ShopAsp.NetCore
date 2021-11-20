@@ -8929,31 +8929,28 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Anh\\.nuget\\packages\\": {}
+    "/home/anh/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Project\\tymobile\\tymobile\\ShopAsp.NetCore\\ShopAsp.NetCore.csproj",
+      "projectUniqueName": "/home/anh/MyProject/ShopAsp.NetCore/ShopAsp.NetCore/ShopAsp.NetCore.csproj",
       "projectName": "ShopAsp.NetCore",
-      "projectPath": "D:\\Project\\tymobile\\tymobile\\ShopAsp.NetCore\\ShopAsp.NetCore.csproj",
-      "packagesPath": "C:\\Users\\Anh\\.nuget\\packages\\",
-      "outputPath": "D:\\Project\\tymobile\\tymobile\\ShopAsp.NetCore\\obj\\",
+      "projectPath": "/home/anh/MyProject/ShopAsp.NetCore/ShopAsp.NetCore/ShopAsp.NetCore.csproj",
+      "packagesPath": "/home/anh/.nuget/packages/",
+      "outputPath": "/home/anh/MyProject/ShopAsp.NetCore/ShopAsp.NetCore/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Anh\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/home/anh/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -8965,7 +8962,6 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "BCrypt.Net-Next": {
             "target": "Package",
@@ -9016,7 +9012,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.415/RuntimeIdentifierGraph.json"
       }
     }
   }
